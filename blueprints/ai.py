@@ -1,11 +1,17 @@
+from flask import Blueprint, redirect, render_template, request, url_for
 import os
 import openai
-from flask import Flask, redirect, render_template, request, url_for
 
-app = Flask(__name__)
+
+bp = Blueprint("ai", __name__, url_prefix="/")
+
+
 openai.api_key = os.getenv("OPENAI_API_KEY")
+# 需要直接把api_key以string放这, 换一个os就get不到key了
+# openai.api_key = "xxxxxxxxxxxxxxxxx"
 
-@app.route("/", methods=("GET", "POST"))
+
+@bp.route("/", methods=("GET", "POST"))
 def index():
     if request.method == "POST":
         programming_topic = request.form["programming_topic"]
@@ -19,6 +25,7 @@ def index():
 
     result = request.args.get("result")
     return render_template("index.html", result=result)
+
 
 def generate_prompt(programming_topic):
     return """Generate a code example related to {}.
