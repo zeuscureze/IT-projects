@@ -18,21 +18,21 @@ bp = Blueprint("auth", __name__, url_prefix="/auth")
 def login():
     if request.method == 'GET':
         return render_template("login.html")
-    else:
+    elif "username" in request.form:
         form = LoginForm(request.form)
         if form.validate():
-            email = form.email.data
+            username = form.username.data
             password = form.password.data
-            user = UserModel.query.filter_by(email=email).first()
+            user = UserModel.query.filter_by(username=username).first()
             if not user:
-                print("邮箱在数据库中不存在！")
+                print("用户在数据库中不存在！")
                 return redirect(url_for("auth.login"))
             if check_password_hash(user.password, password):
                 # cookies: 存放少量数据，例如登录授权的东西
                 # flask中的session是经过贾母后储存在cookie中的
                 # session保存登录信息
                 session['user_id'] = user.id
-                return redirect("/")
+                return "logged in"  #redirect("/")
 
             else:
                 print("密码错误！")
@@ -40,14 +40,27 @@ def login():
         else:
             print(form.errors)
             return redirect(url_for("auth.login"))
+    elif "username_register" in request.form:
+        form = RegisterForm(request.form)
+        if form.validate():
+            email = form.email.data
+            username = form.username_register.data
+            password = form.password_register.data
+            user = UserModel(email=email, username=username, password=generate_password_hash(password))
+            db.session.add(user)
+            db.session.commit()
+            return "success register"  # redirect(url_for("auth.login"))
+        else:
+            print(form.errors)
+            return "fail register"  # redirect(url_for("auth.login"))
 
 
 # GET：从服务器上获取数据
 # POST：将客户端数据提交给服务器
-@bp.route("/register", methods=['GET', 'POST'])
+"""@bp.route("/register", methods=['GET', 'POST'])
 def register():
     if request.method == 'GET':
-        return render_template("register.html")
+        return render_template("login.html")
     else:
         # 验证用户邮箱和验证码的匹配
         # 表单验证： flask-wtf ： wtforms
@@ -62,7 +75,7 @@ def register():
             return redirect(url_for("auth.login"))
         else:
             print(form.errors)
-            return redirect(url_for("auth.register"))
+            return redirect(url_for("auth.register"))"""
 
 
 @bp.route("/logout")

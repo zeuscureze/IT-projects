@@ -6,11 +6,11 @@ from exts import db
 
 # Form: 用来验证前端提交的数据是否符合要求
 class RegisterForm(wtforms.Form):
+    username_register = wtforms.StringField(validators=[Length(min=3, max=20, message="用户名格式错误！")])
     email = wtforms.StringField(validators=[Email(message="邮箱格式错误！")])
     captcha = wtforms.StringField(validators=[Length(min=4, max=4, message="验证码格式错误！")])
-    username = wtforms.StringField(validators=[Length(min=3, max=20, message="用户名格式错误！")])
-    password = wtforms.StringField(validators=[Length(min=6, max=20, message="密码格式错误！ ")])
-    password_confirm = wtforms.StringField(validators=[EqualTo("password", message="两次密码不一致")])
+    password_register = wtforms.StringField(validators=[Length(min=6, max=20, message="密码格式错误！ ")])
+    password_confirm = wtforms.StringField(validators=[EqualTo("password_register", message="两次密码不一致")])
 
     # 自定义验证：
     # 1. 邮箱是否已经被注册
@@ -34,6 +34,6 @@ class RegisterForm(wtforms.Form):
 
 
 class LoginForm(wtforms.Form):
-    email = wtforms.StringField(validators=[Email(message="邮箱格式错误！")])
+    username = wtforms.StringField(validators=[Length(min=3, max=20, message="用户名格式错误！")])
     password = wtforms.StringField(validators=[Length(min=6, max=20, message="密码格式错误！ ")])
 

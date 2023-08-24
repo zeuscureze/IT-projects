@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./login.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 
 </head>
 
@@ -21,12 +21,12 @@
                     <h1>Hello</h1>
                     <h4>一个人的夜晚寂寞难耐，欲火焚身，codegpt能让你在孤独的夜中得到陪伴，让codegpt与你缠绵一整夜！</h4>
                 </div>
-                <div class="form">
+                <form class="form" method="post">
                     <div class="username input-item">
-                        <input type="text" class="ipts">
+                        <input type="text" name = "username" class="ipts">
                     </div>
                     <div class="password input-item">
-                        <input type="password" class="ipts">
+                        <input type="password" name = "password" class="ipts">
                     </div>
                     <div class="other-select">
                         <div class="rem-pwd">
@@ -35,41 +35,41 @@
                         </div>
                         <span class="fogot-pwd-btn">forgot password</span>
                     </div>
-                    <button class="btn">Login</button>
+                    <button class="btn" type="submit">Login</button>
                     <div class="other-login">
                         <span>Other login methods</span>
                         <div class="login-img">
-                            <img src="facebook-one.png" alt="">
-                            <img src="google.png" alt="">
+                            <img src="{{ url_for("static", filename="images/facebook-one.png") }}" alt="">
+                            <img src="{{ url_for("static", filename="images/google.png") }}" alt="">
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="register">
                 <div class="form-title">
                     <h1>Register</h1>
                     <h4>一个人的夜晚寂寞难耐，欲火焚身，codegpt能让你在孤独的夜中得到陪伴，让codegpt与你缠绵一整夜！</h4>
                 </div>
-                <div class="form">
+                <form class="form" method="POST">
                     <div class="username input-item">
-                        <input type="text" class="ipts">
+                        <input type="text" name="username_register" class="ipts">
                     </div>
                     <div class="email input-item">
-                        <input type="text" class="ipts">
+                        <input type="email" name="email" class="ipts">
                     </div>
                     <div class="code input-item">
-                        <input type="text" class="ipts">
+                        <input type="text" name="captcha" class="ipts">
                         <span class="veri-code-tips">Click To Get</span>
                     </div>
                     <div class="password input-item">
-                        <input type="password" class="ipts">
+                        <input type="password" name="password_register" class="ipts">
                     </div>
                     <div class="conform-password input-item">
-                        <input type="password" class="ipts">
+                        <input type="password" name="password_confirm" class="ipts">
                     </div>
                     
-                    <button class="btn">Register</button>
-                </div>
+                    <button type="submit" class="btn">Register</button>
+                </form>
             </div>
             <div class="fogot-pwd">
                 <div class="form-title">
