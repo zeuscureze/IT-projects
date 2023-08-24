@@ -6,9 +6,7 @@ import openai
 bp = Blueprint("ai", __name__, url_prefix="/")
 
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
-# 需要直接把api_key以string放这, 换一个os就get不到key了
-# openai.api_key = "xxxxxxxxxxxxxxxxx"
+openai.api_key = "k-SKur8TpbLBrBmnBhOJBrT3BIbkFJy1ZZcCscOOfIaWunyxTJ"
 
 
 @bp.route("/", methods=("GET", "POST"))
