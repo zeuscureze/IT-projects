@@ -239,7 +239,7 @@ body {
 
 .box .forms .login .form .btn,
 .box .forms .register .form .btn,
-.box .forms .fogot-pwd .form .btn::before{
+.box .forms .fogot-pwd .form .btn{
     content: "";
     width:42%;
     height: 50px;
