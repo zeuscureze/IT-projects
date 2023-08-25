@@ -27,10 +27,9 @@ class RegisterForm(wtforms.Form):
         captcha_model = EmailCaptchaModel.query.filter_by(email=email, captcha=captcha).first()
         if not captcha_model:
             raise wtforms.ValidationError(message="邮箱或验证码错误！")
-
-        # else:
-        #     db.session.delete(captcha_model)
-        #     db.session.commit()
+        else:
+            db.session.delete(captcha_model)
+            db.session.commit()
 
 
 class LoginForm(wtforms.Form):

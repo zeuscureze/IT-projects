@@ -55,27 +55,6 @@ def login():
             return "fail register"  # redirect(url_for("auth.login"))
 
 
-# GET：从服务器上获取数据
-# POST：将客户端数据提交给服务器
-"""@bp.route("/register", methods=['GET', 'POST'])
-def register():
-    if request.method == 'GET':
-        return render_template("login.html")
-    else:
-        # 验证用户邮箱和验证码的匹配
-        # 表单验证： flask-wtf ： wtforms
-        form = RegisterForm(request.form)
-        if form.validate():
-            email = form.email.data
-            username = form.username.data
-            password = form.password.data
-            user = UserModel(email=email, username=username, password=generate_password_hash(password))
-            db.session.add(user)
-            db.session.commit()
-            return redirect(url_for("auth.login"))
-        else:
-            print(form.errors)
-            return redirect(url_for("auth.register"))"""
 
 
 @bp.route("/logout")

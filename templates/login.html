@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
-
+    <script src="{{ url_for('static', filename='jquery/jquery.3.6.min.js') }}"></script>
 </head>
 
 <body>
@@ -130,6 +130,22 @@
 
     veriCodeTips.addEventListener('click', function () {
         veriCodeTipsClick()
+        var email = $("input[name='email']").val();
+        $.ajax({
+            url: "/auth/captcha/email?email="+email,
+            method: "GET",
+            success: function(result){
+                var code = result['code'];
+                if (code == 200) {
+                    alert("验证码发送成功！");
+                } else {
+                    alert(result['message']);
+                }
+            },
+            fail: function(error) {
+                console.log(error);
+            }
+        })
     })
     registerBtn.addEventListener('click', function () {
         login.style.opacity = '0'
