@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODE GPT Q&A</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+            position: relative;
+        }
+        
+        h1 {
+            color: #c586c0;
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+        }
+        
+        .question {
+            font-weight: normal;
+            margin-top: 40px;
+            font-size: 1.2em;
+            color: #9cdcfe;
+        }
+        
+        .answer {
+            margin-top: 20px;
+            padding-left: 20px;
+            border-left: 2px solid #555;
+        }
+
+        .return-home {
+            position: absolute;
+            top: 10px;
+            left: -400px; /* Moving the link to the left */
+            font-weight: normal;
+            text-decoration: none;
+            color: #9cdcfe;
+            background-color: #252526;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s; 
+            font-size: 14px; /* Adjusting size for VSCode-like appearance */
+        }
+
+        .return-home:hover {
+            background-color: #1e1e1e;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px 10px;
+            }
+            .return-home {
+                left: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="http://127.0.0.1:54491/IT%20Project/Main.html">← Back to the main page</a>
+        <h1>CODE GPT Q&A</h1>
+
+        <!-- Question 1 -->
+        <div class="question">
+            1. What is machine learning?
+        </div>
+        <div class="answer">
+            Machine learning is a subset of artificial intelligence that provides systems the ability to learn and improve from experience without being explicitly programmed. It focuses on the development of algorithms that can access and use data to learn for themselves.
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            2. What's the difference between supervised and unsupervised learning?
+        </div>
+        <div class="answer">
+            Supervised learning is when the algorithm is trained using labeled data, meaning the training set includes the correct answer. Unsupervised learning, on the other hand, is when the algorithm is trained on data without explicit instructions on what to do, trying to learn the patterns and structures from the data.
+        </div>
+
+        <!-- Add more questions as needed... -->
+
+    </div>
+</body>
+
+</html>
