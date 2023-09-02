@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <!-- 左边一列 -->
+    <!-- left side -->
     <div id="sidebar">
         <div class="left">
             <div class="history">
@@ -28,7 +28,7 @@
                 
                 <br>
                 <span class="text">Light mode </span>
-                <!-- 开关 （BV1pv4y1579Z） -->
+                <!-- switch -->
                 <label class="switch">
                     <input type="checkbox" id="modeSwitch">
                     <span class="circle"></span>
@@ -39,7 +39,7 @@
     </div>
 
     <div class="main">
-        <!-- 标题一行 -->
+        <!-- title -->
         <div class="header">
             <h1 class="text">CODEGPT</h1>
             <span class="open">
@@ -52,7 +52,7 @@
         <hr>
     
 
-        <!-- 工作区 -->
+        <!-- workspace -->
         <div class="workspace">
             <select class="text selector" name="" id="">
                 <option value="" selected>Language: C</option>
@@ -64,27 +64,27 @@
             <button type="button">Compare</button>
             <button type="reset">Reset</button>
             <br>
-            <textarea name="" id="" cols="30" rows="10" placeholder="Input your code"></textarea>
+            <textarea name="" id="" cols="50" rows="20" placeholder="Input your code"></textarea>
             
         </div>
 
-        <!-- 生成区 -->
+        <!-- generation area -->
         <div class="gpt-area">
             <select class="text selector" name="" id="">
                 <option value="" selected>GPT-3.5</option>
                 <option value="">GPT-4</option>
             </select>
-            <!-- 生成区 -->
-            <textarea name="" id="" cols="30" rows="10"></textarea>
             <button type="button">Hide</button>
+            <textarea name="" id="" cols="50" rows="20"></textarea>
+            
         </div>
 
-        <!-- 输入请求区 -->
+        <!-- input area -->
         <div class="query">
-            <textarea name="" id="" cols="30" rows="10" placeholder="Send a request"></textarea>
-            <!-- 发送请求 -->
+            <textarea name="" id="" cols="50" rows="3" placeholder="Send a request"></textarea>
+            <!-- send request -->
             <button type="submit">Send</button>
-            <!-- 重置按钮 -->
+            <!-- reset button -->
             <button type="reset">Reset</button>
         </div>
     </div>
