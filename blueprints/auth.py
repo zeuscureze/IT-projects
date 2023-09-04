@@ -4,9 +4,8 @@ from flask_mail import Message
 from flask import request
 import string
 import random
-from models import EmailCaptchaModel
+from models import EmailCaptchaModel, UserModel
 from .forms import RegisterForm, LoginForm
-from models import UserModel
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -32,7 +31,7 @@ def login():
                 # flask中的session是经过贾母后储存在cookie中的
                 # session保存登录信息
                 session['user_id'] = user.id
-                return "logged in"  #redirect("/")
+                return redirect("/code")
 
             else:
                 print("密码错误！")
@@ -49,12 +48,10 @@ def login():
             user = UserModel(email=email, username=username, password=generate_password_hash(password))
             db.session.add(user)
             db.session.commit()
-            return "success register"  # redirect(url_for("auth.login"))
+            return redirect(url_for("auth.login"))
         else:
             print(form.errors)
-            return "fail register"  # redirect(url_for("auth.login"))
-
-
+            return "注册失败"  # redirect(url_for("auth.login"))
 
 
 @bp.route("/logout")

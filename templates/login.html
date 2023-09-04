@@ -105,7 +105,7 @@
     const loginBtn = document.querySelector('.login-btn')
     const fogotPwdBtn = document.querySelector('.fogot-pwd-btn')
     const veriCodeTips = document.querySelector('.veri-code-tips');
-    let reckonTimeFlag = 5; //倒计时
+    let reckonTimeFlag = 30; //倒计时
     let reckonTime; //定时器
     //定时器
     function countDown() {
@@ -113,7 +113,7 @@
         reckonTimeFlag--;
         if (reckonTimeFlag < 0) {
             clearInterval(reckonTime);
-            reckonTimeFlag = 5;
+            reckonTimeFlag = 30;
             veriCodeTips.innerHTML = `Click To Get`;
             veriCodeTips.style.color = "rgb(113 123 185)";
             veriCodeTips.onclick = veriCodeTipsClick;

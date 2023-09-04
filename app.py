@@ -4,6 +4,7 @@ from exts import db, mail
 from models import UserModel
 from blueprints.ai import bp as ai_bp
 from blueprints.auth import bp as auth_bp
+from blueprints.code import bp as code_bp
 from flask_migrate import Migrate
 
 
@@ -23,6 +24,7 @@ migrate = Migrate(app, db)
 
 app.register_blueprint(ai_bp)
 app.register_blueprint(auth_bp)
+app.register_blueprint(code_bp)
 
 
 @app.before_request
