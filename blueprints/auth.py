@@ -31,7 +31,7 @@ def login():
                 # flask中的session是经过贾母后储存在cookie中的
                 # session保存登录信息
                 session['user_id'] = user.id
-                return redirect("/code")
+                return redirect(url_for("ai.code"))  # redirect("/code")
 
             else:
                 print("密码错误！")

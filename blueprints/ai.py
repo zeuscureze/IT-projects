@@ -6,23 +6,24 @@ import openai
 bp = Blueprint("ai", __name__, url_prefix="/ai")
 
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 
-@bp.route("/main", methods=("GET", "POST"))
-def index():
-    if request.method == "POST":
-        programming_topic = request.form["programming_topic"]
+@bp.route("/code", methods=("GET", "POST"))
+def code():
+
+    user_input = ""
+    result = ""
+    if request.method == 'POST':
+        user_input = request.form['user_input']
         response = openai.Completion.create(
             model="text-davinci-003",
-            prompt=generate_prompt(programming_topic),
+            prompt=generate_prompt(user_input),
             temperature=0.6,
             max_tokens=500  # 设置生成的最大标记数量
         )
-        return redirect(url_for("ai.main", result=response.choices[0].text))
-
-    result = request.args.get("result")
-    return render_template("index.html", result=result)
+        result = response.choices[0].text
+    return render_template('root.html', user_input=user_input, result=result)
 
 
 def generate_prompt(programming_topic):

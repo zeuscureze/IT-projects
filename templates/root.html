@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>simple demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            text-align: -webkit-left;
+        }
+
+        .input_question {
+            margin-top: 150px; /* 添加上边距 */
+        }
+
+        .result_qs_ans {
+            margin-top: 75px; /* 添加上边距 */
+            margin-bottom: 20px; /* 添加下边距 */
+        }
+    </style>
+</head>
+<body>
+    <h1 class="input_question">尊贵的用户^_^ 请问今天需要为您解答什么编程问题呢</h1>
+    <form method="POST">
+        <input type="text" name="user_input">
+        <input type="submit" value="求解">
+    </form>
+
+    {% if user_input %}
+        <p class="result_qs_ans">您的题目：{{ user_input }}</p>
+    {% endif %}
+
+    {% if result %}
+        <div>
+            <pre class="result_qs_ans">这边给您的示例解：{{ result }}</pre>
+        </div>
+    {% endif %}
+</body>
+</html>
