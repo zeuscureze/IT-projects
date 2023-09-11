@@ -1,25 +1,12 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>主界面</title>
+{% extends "navBar.html" %}
+{% block title %}Intro{% endblock %}
+{% block head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/intro.css') }}">
-</head>
+{% endblock %}
     
 
 
-<body>
-    <header>
-
-        <nav>
-            <ul class="top-menu">
-                <li><a href="#">Q&A</a></li>
-                <li><a href="{{ url_for("auth.login") }}">Sign In & Sign Up</a></li>
-
-            </ul>
-        </nav>
-    </header>
-    
+{% block body %}
     <div class="HelloCodeGPT">
         Hello,CodeGPT!
     </div>
@@ -54,7 +41,4 @@
     <p>Whether you're looking to start your journey into programming or delve deeper into programming knowledge, Code GPT is here to provide strong support. Start using our services and make your programming journey more enjoyable and accessible.</p>
     </div>
 
- 
-    
-
-</body>
+{% endblock %}
