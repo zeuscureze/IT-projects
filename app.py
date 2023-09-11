@@ -6,6 +6,7 @@ from blueprints.ai import bp as ai_bp
 from blueprints.auth import bp as auth_bp
 from blueprints.code import bp as code_bp
 from blueprints.index import bp as index_bp
+from blueprints.qa import bp as qa_bp
 from flask_migrate import Migrate
 
 
@@ -27,6 +28,7 @@ app.register_blueprint(ai_bp)
 app.register_blueprint(auth_bp)
 app.register_blueprint(code_bp)
 app.register_blueprint(index_bp)
+app.register_blueprint(qa_bp)
 
 
 @app.before_request
