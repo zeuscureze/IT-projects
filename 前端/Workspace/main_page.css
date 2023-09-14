@@ -1,0 +1,437 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #232323;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    overflow: hidden;
+}
+/* light mode */
+body.light { 
+    background-color: #FFFFFF;  /* 设置背景色为白色 */
+}
+
+body.light .header,
+body.light .gpt-area,
+body.light .main {
+    background-color: #F5F5F5;  /* 设置背景色为白色 */
+}
+
+body.light .gpt-area textarea {
+    background-color: #FFFFFF;  /* 设置背景色为白色 */
+    color: #000000;  /* 设置文本颜色为黑色 */
+}
+
+body.light .text {
+    color: #FFFFFF;  /* 设置文本颜色为黑色 */
+}
+
+body.light .nav-link.qna{
+    color: #000000;
+}
+
+body.light .nav-link.chat{
+    color: #000000;
+}
+
+.form-container button {
+    height: 100%;  /* 使按钮高度与其容器一样 */
+    line-height: normal; /* 使文字垂直居中 */
+}
+
+.main {
+    background-color: #1E1E1E; /* VScode背景颜色 */
+    margin: 20px;
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+}
+
+
+.text {
+    color: #9CDCFE; /* VScode默认的文本颜色 */
+}
+/* light mode(except sidebar) */
+body.light .text:not(.left .text, .selector.text) {
+    color: #000000;
+}
+
+.selector {
+    background-color: rgb(52, 90, 146);
+    text-align: center;
+    line-height: 30px;
+    width: 130px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.header {
+    display: flex;
+}
+/* sidebar button */
+.header .open::after {
+    position: absolute;
+    content: '\2630';
+    color: #ffffff;
+    left: 1.5cm;
+    top: 1.5cm;
+    pointer-events: none;
+}
+.header::after {
+    display: none;
+}
+.header .open .bg {
+    position: absolute;
+    background-color: rgb(52, 90, 146);
+    width: 1cm;
+    height: 1cm;
+    border-radius: 25%;
+    left: 1.2cm;
+    top: 1.3cm;
+    cursor: pointer;
+    transition: .25s;
+}
+.header .open .bg:hover {
+    width: 1.2cm;
+    height: 1.2cm;
+    left: 1.1cm;
+    top: 1.2cm;
+}
+
+/* Q&A button */
+
+.header h1 {
+    font-weight: bold;
+    font-style: italic;
+    margin: 0;
+    text-align: center;
+    flex: 1;
+}
+.header a {
+    position: absolute;
+    right: 1.1cm;
+    text-decoration: none;
+    line-height: 50px;
+}
+.header a:hover {
+    color: rgb(52, 90, 146);
+}
+.header a.bg {
+    text-decoration: none; /* 去除超链接下划线 */
+    color: inherit; /* 使用header中的默认颜色，或选择适合您的颜色 */
+    margin-left: 10px; /* 为按钮之间留出一些空间，可根据需要调整 */
+}
+
+.header .bg {
+    background-color: transparent; /* 默认透明 */
+}
+
+.nav-link.qna {
+    margin-right: 100px;
+    color: #9CDCFE;
+    text-decoration: none; /* 这将移除链接的下划线 */
+}
+
+.nav-link.qna:hover {
+    text-decoration: underline; /* 当鼠标悬停时显示下划线 */
+}
+
+.nav-link.chat {
+    color: #9CDCFE;
+    text-decoration: none; /* 这将移除链接的下划线 */
+}
+
+.nav-link.chat:hover {
+    text-decoration: underline; /* 当鼠标悬停时显示下划线 */
+}
+
+/* sidebar */
+#sidebar {
+    width: 0;
+    height: 100%;
+    transition: .25s;
+    overflow-x: hidden;
+    position: fixed;
+    z-index: 1000;
+}
+
+.left {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #000000;
+}
+.history {
+    padding: 30px;
+    position: relative;
+    font-size: 15pt;
+    margin-top: 10px;
+}
+/* close button */
+.history .close::after {
+    position: absolute;
+    content: '\2715';
+    color: #ffffff;
+    pointer-events: none;
+    left: 5.7cm;
+}
+.history .close .bg {
+    position: absolute;
+    background-color: #000000;
+    width: 0.8cm;
+    height: 0.8cm;
+    border-radius: 25%;
+    left: 5.53cm;
+    top: 0.75cm;
+    cursor: pointer;
+    transition: .25s;
+}
+.history .close .bg:hover {
+    width: 1cm;
+    height: 1cm;
+    left: 5.42cm;
+    top: 0.68cm;
+    background-color: rgb(50, 62, 80);
+}
+/* setting button inside the sidebar */
+.setting::after {
+    position: absolute;
+    content: '\2699';
+    color: #ffffff;
+    right: 1.5cm;
+    bottom: 0cm;
+    pointer-events: none;
+}
+.setting .bg {
+    position: absolute;
+    background-color: rgb(52, 90, 146);
+    width: 1.2cm;
+    height: 0.8cm;
+    border-radius: 25%;
+    right: 1.1cm;
+    bottom: -0.1cm;
+    cursor: pointer;
+    transition: .25s;
+}
+.setting .bg:hover {
+    width: 1.4cm;
+    height: 1cm;
+    right: 1.0cm;  // 将按钮向右移动以适应新大小
+    bottom: -0.6cm; // 将按钮向下移动以适应新大小
+    background-color: rgb(90, 153, 248);
+}
+.setting {
+    position: relative;
+    bottom: 1cm;
+    left: 0.3cm;
+}
+
+/* switch (design from https://www.bilibili.com/video/BV1pv4y1579Z/?spm_id_from=333.337.search-card.all.click) */
+.setting .switch {
+    width: 1.1cm;
+    height: 1cm;
+    cursor: pointer;
+    position: relative;
+}
+.setting .switch input {
+    appearance: none;
+    /* bar color */
+    background-color: rgb(50, 62, 80);
+    width: 1.1cm;
+    height: 0.13cm;
+    border-radius: 15%;
+    position: absolute;
+    left: 0.6cm;
+    bottom: 0.1cm;
+}
+.setting .switch .circle {
+    width: 0.6cm;
+    height: 0.6cm;
+    background-color: #000000;
+    border-radius: 50%;
+    position: absolute;
+    left: 1.2cm;
+    bottom: -0.03cm;
+    transition: all 0.35s;
+}
+/* internal circle */
+.setting .switch .circle::after {
+    content: "";
+    inset: 0.1cm;
+    /* small circle color */
+    background-color: #232323;
+    border-radius: 50%;
+    /* ring color */
+    box-shadow: inset 0 0 0 0.09cm rgb(52, 90, 146);
+
+    position: absolute;
+    transition: all 0.35s;
+}
+.setting .switch input:checked ~ .circle {
+    left: calc(100% + 0.7cm);
+}
+.setting .switch input:checked ~ .circle::after {
+    box-shadow: inset 0 0 0 0.3cm rgb(90, 153, 248);
+}
+.setting-popup {
+    display: none;
+    position: absolute;
+    background-color: #3C3C3C;
+    padding: 10px;
+    border-radius: 5px;
+    top: 0px; 
+    left: 40px;
+    z-index: 1001;
+    transform: translateY(-100%); 
+}
+
+.setting-popup a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+    border-bottom: 1px solid #444;
+}
+
+.setting-popup a:last-child {
+    border-bottom: none;
+}
+
+.setting-popup a:hover {
+    background-color: rgba(52, 90, 146, 0.7);
+}
+
+.popup-wrapper {
+    position: absolute;
+    left: 50%;
+    bottom: 100%; /* 让它的初始位置在.setting元素的正上方 */
+    transform: translateY(-10px) translateX(-50%); /* 小的偏移来实现从上方弹出的效果，并且水平居中对齐 */
+    transition: transform 0.3s ease-out; /* 平滑的过渡效果 */
+}
+.setting:hover .popup-wrapper {
+    transform: translateY(0) translateX(-50%); /* 在悬停时重置Y偏移，使其正好位于.setting元素的正上方 */
+}
+/* generation area */
+.gpt-area {
+    width: 100%;
+    height: calc(100% - 50px); /* 原始高度，可以根据需要进行调整 */
+    position: relative;
+    background-color: #252526; /* VScode的暗色系颜色 */
+}
+
+.gpt-area .selector {
+    display: block; /* 修改为块元素 */
+    margin: 0 auto; /* 居中显示 */
+    background-color: #333333; /* VScode选择框背景颜色 */
+    color: #9CDCFE; /* 文本颜色 */
+}
+
+.gpt-area textarea {
+    background-color: #3C3C3C; /* VScode的灰色 */
+    color: #FFFFFF; /* VScode默认的文本颜色 */
+    border: none;
+    padding: 10px;
+    resize: none; /* 如果您不想用户调整textarea的大小 */
+    width: 99%; /* 根据需要调整宽度 */
+    height: 100%; /* 根据需要调整高度 */
+}
+
+/* Added styles for new elements */
+.line-numbers {
+    float: left;
+    color: #9CDCFE;
+    padding-right: 5px;
+    text-align: right;
+}
+
+.buttons {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.gpt-buttons {
+    position: absolute;
+    top: 10px;  /* 根据需要调整距离顶部的位置 */
+    right: 10px;  /* 根据需要调整距离右边的位置 */
+    z-index: 1;  /* 确保按钮在其他元素上方 */
+}
+
+.gpt-btn {
+    background-color: #333333;  /* 按钮背景颜色 */
+    color: #9CDCFE;  /* 文本颜色 */
+    border: none;  /* 移除边框 */
+    padding: 5px 15px;  /* 上下间距为5px，左右间距为15px */
+    margin-left: 5px;  /* 按钮之间的间距 */
+    cursor: pointer;  /* 更改鼠标样式 */
+    transition: background-color 0.3s;  /* 背景颜色的过渡效果 */
+}
+
+.gpt-btn:hover {
+    background-color: #555555;  /* 悬停时的背景颜色 */
+}
+/* Workspace area */
+.generation-area{
+    position: relative; /* 使其子元素可以相对于它进行定位 */
+    float: left; /* 当compare被点击时，使其浮动在左侧 */
+
+    width: 100%;
+}
+/* AI area */
+.ai-text-area-container {
+    background-color: #1E1E1E; 
+    position: relative;
+    float: right; /* 当compare被点击时，使其浮动在右侧 */
+    display: none; /* 默认情况下隐藏AI text area */
+    width: 50%;
+    height: 840px;
+}
+.ai-text-area,
+.text-area {
+    background-color: #1E1E1E; 
+    width: 100%;
+    height: 840px; /* 可以根据需要更改 */
+}
+
+
+button {
+    background-color: #1E1E1E; /* VScode灰色 */
+    color: #FFF; /* 白色文本 */
+    border: 1px solid #3C3C3C; /* 为元素添加一个深灰色的边框 */
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.ai-close {
+    margin: 10px;
+}
+
+
+
+/*generation area*/
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ai-close {
+    position: absolute;
+    top: 10px; /* 调整为需要的位置 */
+    right: 10px; /* 调整为需要的位置 */
+}
+body.ai-active .generation-area {
+    width: 50%;
+}
+
+body.ai-active .ai-text-area-container {
+    display: block;
+}
+.right-actions button {
+    height: 40px; // 你可以设置为你喜欢的高度
+    /* ... 其他样式 ... */
+}
