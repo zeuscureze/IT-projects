@@ -410,3 +410,35 @@ body.light .text:not(.left .text, .selector.text) {
     height: 40px;
     width: 75px;
 }
+
+/* loading icon */
+.gpt-area .loading {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, rgb(90, 156, 255), #004c5d);
+    animation: rotate 0.65s linear infinite;
+    display: inline-block;
+    position: absolute;
+    top: 32%;
+    left: 50%;
+}
+.gpt-area .loading::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #3C3C3C;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
