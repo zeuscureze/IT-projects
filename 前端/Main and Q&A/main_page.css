@@ -234,8 +234,8 @@ body.light .text:not(.left .text, .selector.text) {
 .setting .bg:hover {
     width: 1.4cm;
     height: 1cm;
-    right: 1.0cm;  // 将按钮向右移动以适应新大小
-    bottom: -0.6cm; // 将按钮向下移动以适应新大小
+    right: 1.0cm;  /* 将按钮向右移动以适应新大小 */
+    bottom: -0.2cm; /* 将按钮向下移动以适应新大小 */
     background-color: rgb(90, 153, 248);
 }
 .setting {
@@ -377,7 +377,7 @@ body.light .text:not(.left .text, .selector.text) {
     width: 90%;  /* 增加了宽度 */
 }
 /* 修改按钮高度和颜色 */
-.query button {
+/* .query button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -385,10 +385,28 @@ body.light .text:not(.left .text, .selector.text) {
     background-color: grey;  /* 设置按钮背景颜色为灰色 */
     color: white;  /* 设置按钮文字颜色为白色 */
     border: none;  /* 去除边框 */
-    margin-left: 10px;\
+    margin-left: 10px;
     height: 50%;
-}
+} */
+
 .right-actions button {
     height: 40px; // 你可以设置为你喜欢的高度
     /* ... 其他样式 ... */
+}
+
+/* submit area */
+.query button {
+    background-color: rgb(52, 90, 146);
+    border-radius: 15%;
+    height: 35px;
+    width: 70px;
+    font-size: 16px;
+    border-color: rgb(88, 155, 255);
+    color: rgb(252, 252, 252);
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.query button:hover {
+    height: 40px;
+    width: 75px;
 }
