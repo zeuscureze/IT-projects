@@ -18,8 +18,7 @@ img{
     --primary-color-light: #F6F5FF;
     --toggle-color: #DDD;
     --text-color: #707070;
-
-   
+    
     --tran-03: all 0.2s ease;
     --tran-03: all 0.3s ease;
     --tran-04: all 0.3s ease;
@@ -27,6 +26,7 @@ img{
 }
 
 body{
+    overflow-x: hidden;
     min-height: 100vh;
     background-color: var(--body-color);
     transition: var(--tran-05);
@@ -370,7 +370,7 @@ Chat
   left: calc(35% + 250px);
   transform: translate(-50%, -50%);
   width: 1650px;
-  height: 900vh;
+  height: 100vh;
   max-height: 900px;
   z-index: 2;
   overflow: hidden;
@@ -437,7 +437,7 @@ Messages
   position: absolute;
   top: 0;
   left: 0;
-  height: 101%;
+  height: 100%;
   width: 100%;
 }
 .messages .message {
@@ -591,7 +591,7 @@ Message Box
   height: 17px;
   margin-top: 1px;       /* 调整上方的距离 */
   margin-bottom: 10px; 
-  padding: 20px 17px;
+  padding: 20px 20px;
   width: 96%;
   overflow-y: hidden; 
   outline: none;
