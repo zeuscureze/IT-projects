@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question and Answer</title>
+    <link rel="stylesheet" href="Q&A.css">
+    <script src="https://kit.fontawesome.com/442f5b06e6.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+</head>
+
+<body>
+    <header>
+        <nav class="top-menu">
+            <ul>
+                <li><a href="#">CodeGPT</a></li>
+                <li><a href="#">Introduction</a></li>
+                <li><a href="#">Sign In/ up</a></li>
+                <li><a class="active" href="#">Q&A</a></li>
+                <li style="float:right"><a href="#"> Ask a Question</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="Q_A">Question and Answer</div>
+    
+    <div class="question_select">
+        <div class="select_btn">
+            <span class="text_btn">Question Filter</span>
+            <span class="arrow_down">
+                <i class="fa-sharp fa-solid fa-chevron-up" style="color: #ffffff;"></i>
+            </span>
+        </div>
+        <ul class="list">
+            <li class="list_items">
+                <span class = "checkbox">
+                    <i class="fa-solid fa-check check_icon" style="color: #ffffff;"></i>
+                </span>
+                    <span class = "item_text">All Question</span>
+            </li>
+            <li class="list_items">
+                <span class = "checkbox">
+                    <i class="fa-solid fa-check check_icon" style="color: #ffffff;"></i>
+                </span>
+                    <span class = "item_text">Answers</span>
+            </li>
+            <li class="list_items">
+                <span class = "checkbox">
+                    <i class="fa-solid fa-check check_icon" style="color: #ffffff;"></i>
+                </span>
+                    <span class = "item_text">No Answers</span>
+            </li>
+            
+            
+        </ul>
+        
+    </div>
+    <div class="question_container">
+        <div class="question_box">
+            <h2><a href="target-page.html">How do I retrieve my AZ900 certificate when I forgot my username and password?</a></h2>
+            <p>I have taken and passed AZ900 certification. It is time to renew and I forgot my Microsoft Username and Password and my phone number is changed. What are my options of getting that account information renewed and retrieving a copy of the certificatio。</p>
+        </div>
+        <div class="question_box">
+            <h2><a href="target-page.html">Web Filtering Integration with Microsoft 365: How to Ensure Safe and Productive Online Work Environments</a></h2>
+            <p>This is the first question.</p>
+        </div>
+        <div class="question_box">
+            <h2><a href="target-page.html">The GetCustomerPurchaseIdAsync method always returns an empty value</a></h2>
+            <p>This is the second question.</p>
+        </div>
+    </div>
+    
+
+    <script>
+    const select_btn = document.querySelector(".select_btn");
+    const list_items = document.querySelectorAll(".list_items");
+    const text_btn = document.querySelector(".text_btn");
+
+    select_btn.addEventListener("click", () => {
+        select_btn.classList.toggle("close");
+    });
+
+    list_items.forEach(list_item => {
+        list_item.addEventListener("click", () => {
+           
+            list_items.forEach(item => {
+                if (item !== list_item) {
+                    item.classList.remove("checked");
+                }
+            });
+
+            // 切换选择状态
+            list_item.classList.toggle("checked");
+
+           
+            const optionName = list_item.textContent.trim();
+            text_btn.textContent = optionName;
+        });
+    });
+    
+</script>
+
+
+
+    
+</body>
+</html>
