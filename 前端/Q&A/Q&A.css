@@ -234,6 +234,7 @@ header {
     display: flex;
     flex-direction: column; 
     margin: 15px;
+    border-bottom: solid pink 1px;
     
 }
 
@@ -251,9 +252,9 @@ header {
 
 
 .question_container .question_box p {
-    color: white;
-    font-size: 10px; /* 设置答案字体大小 */
-    margin: 10px 0; /* 设置答案上下外边距 */
+    color: whitesmoke;
+    font-size: 15px; 
+    margin: 10px 15px;; 
 }
 a{
     color: white;
