@@ -12,39 +12,27 @@ body {
 }
 /* light mode */
 body.light { 
-    background-color: #FFFFFF;  /* 设置背景色为白色 */
+    background-color: #ffffff;  /* 设置背景色为白色 */
 }
 
-body.light .header,
-body.light .gpt-area,
-body.light .main {
-    background-color: #F5F5F5;  /* 设置背景色为白色 */
+body.light .query-text {
+    background-color: rgb(244, 244, 244);
+    color: #000000;  /* 设置文本颜色为黑色 */
 }
 body.light .text-area {
-    background-color: #FFFFFF;  /* 设置背景色为白色 */
+    background-color: rgb(244, 244, 244);
     color: #000000;  /* 设置文本颜色为黑色 */
 }
 body.light .ai-text-area {
-    background-color: #FFFFFF;  /* 设置背景色为白色 */
+    background-color: rgb(244, 244, 244);  
     color: #000000;  /* 设置文本颜色为黑色 */
 }
 body.light .ai-text-area-container {
     background-color: #F5F5F5;  /* 设置背景色为白色 */
 }
-body.light .logo {
-    color: #1E1E1E;  /* 设置文本颜色为白色 */
-    background-color: #F5F5F5;
-}
+
 body.light .text {
     color: #FFFFFF;  /* 设置文本颜色为白色 */
-}
-
-body.light .nav-link.qna{
-    color: #1E1E1E;
-}
-
-body.light .nav-link.chat{
-    color: #1E1E1E;
 }
 
 .form-container button {
@@ -53,31 +41,18 @@ body.light .nav-link.chat{
 }
 
 .main {
-    background-color: #1E1E1E; /* VScode背景颜色 */
     margin: 20px;
     padding: 20px;
-    height: 100%;
+    height: 95%;
     width: 100%;
 }
 
-.logo {
-    color: #9CDCFE; /* VScode默认的文本颜色 */
-}
 .text {
-    color: #9CDCFE; /* VScode默认的文本颜色 */
+    color: #ffffff; /* VScode默认的文本颜色 */
 }
 /* light mode(except sidebar) */
 body.light .text:not(.left .text, .selector.text) {
     color: #000000;
-}
-
-.selector {
-    background-color: rgb(52, 90, 146);
-    text-align: center;
-    line-height: 30px;
-    width: 130px;
-    height: 30px;
-    cursor: pointer;
 }
 
 .header {
@@ -88,21 +63,18 @@ body.light .text:not(.left .text, .selector.text) {
     position: absolute;
     content: '\2630';
     color: #ffffff;
-    left: 1.5cm;
-    top: 1.5cm;
+    left: 1.51cm;
+    top: 1.19cm;
     pointer-events: none;
-}
-.header::after {
-    display: none;
 }
 .header .open .bg {
     position: absolute;
-    background-color: rgb(52, 90, 146);
+    background-color: rgb(81, 147, 245);
     width: 1cm;
     height: 1cm;
     border-radius: 25%;
     left: 1.2cm;
-    top: 1.3cm;
+    top: 1cm;
     cursor: pointer;
     transition: .25s;
 }
@@ -110,11 +82,37 @@ body.light .text:not(.left .text, .selector.text) {
     width: 1.2cm;
     height: 1.2cm;
     left: 1.1cm;
-    top: 1.2cm;
+    top: 0.9cm;
 }
 
 /* Q&A button */
+.header::after {
+    position: absolute;
+    content: '\211A';
+    color: #ffffff;
+    right: 3.79cm;
+    top: 1.25cm;
+    pointer-events: none;
+}
+.header .qna {
+    position: absolute;
+    background-color: rgb(81, 147, 245);
+    width: 1cm;
+    height: 1cm;
+    border-radius: 100%;
+    right: 3.44cm;
+    top: 1cm;
+    cursor: pointer;
+    transition: .25s;
+}
+.header .qna:hover {
+    width: 1.2cm;
+    height: 1.2cm;
+    right: 3.32cm;
+    top: 0.9cm;
+}
 
+/* 标题 */
 .header h1 {
     font-weight: bold;
     font-style: italic;
@@ -122,42 +120,32 @@ body.light .text:not(.left .text, .selector.text) {
     text-align: center;
     flex: 1;
 }
-.header a {
+
+.header::before {
     position: absolute;
-    right: 1.1cm;
-    text-decoration: none;
-    line-height: 50px;
+    content: '\279C';
+    color: #ffffff;
+    right: 1.7cm;
+    top: 1.2cm;
+    pointer-events: none;
+    z-index: 1;
 }
-.header a:hover {
-    color: rgb(52, 90, 146);
+.header .chat {
+    position: absolute;
+    background-color: rgb(81, 147, 245);
+    width: 1cm;
+    height: 1cm;
+    border-radius: 100%;
+    right: 1.44cm;
+    top: 1cm;
+    cursor: pointer;
+    transition: .25s;
 }
-.header a.bg {
-    text-decoration: none; /* 去除超链接下划线 */
-    color: inherit; /* 使用header中的默认颜色，或选择适合您的颜色 */
-    margin-left: 10px; /* 为按钮之间留出一些空间，可根据需要调整 */
-}
-
-.header .bg {
-    background-color: transparent; /* 默认透明 */
-}
-
-.nav-link.qna {
-    margin-right: 100px;
-    color: #9CDCFE;
-    text-decoration: none; /* 这将移除链接的下划线 */
-}
-
-.nav-link.qna:hover {
-    text-decoration: underline; /* 当鼠标悬停时显示下划线 */
-}
-
-.nav-link.chat {
-    color: #9CDCFE;
-    text-decoration: none; /* 这将移除链接的下划线 */
-}
-
-.nav-link.chat:hover {
-    text-decoration: underline; /* 当鼠标悬停时显示下划线 */
+.header .chat:hover {
+    width: 1.2cm;
+    height: 1.2cm;
+    right: 1.32cm;
+    top: 0.9cm;
 }
 
 /* sidebar */
@@ -220,21 +208,20 @@ body.light .text:not(.left .text, .selector.text) {
 }
 .setting .bg {
     position: absolute;
-    background-color: rgb(52, 90, 146);
+    background-color: rgb(81, 147, 245);
     width: 1.2cm;
     height: 0.8cm;
     border-radius: 25%;
     right: 1.1cm;
-    bottom: -0.1cm;
+    bottom: -0.13cm;
     cursor: pointer;
     transition: .25s;
 }
 .setting .bg:hover {
     width: 1.4cm;
     height: 1cm;
-    right: 1.0cm;  // 将按钮向右移动以适应新大小
-    bottom: -0.6cm; // 将按钮向下移动以适应新大小
-    background-color: rgb(90, 153, 248);
+    right: 1.0cm;
+    bottom: -0.22cm;
 }
 .setting {
     position: relative;
@@ -252,7 +239,7 @@ body.light .text:not(.left .text, .selector.text) {
 .setting .switch input {
     appearance: none;
     /* bar color */
-    background-color: rgb(50, 62, 80);
+    background-color: rgb(81, 147, 245);
     width: 1.1cm;
     height: 0.13cm;
     border-radius: 15%;
@@ -278,7 +265,7 @@ body.light .text:not(.left .text, .selector.text) {
     background-color: #232323;
     border-radius: 50%;
     /* ring color */
-    box-shadow: inset 0 0 0 0.09cm rgb(52, 90, 146);
+    box-shadow: inset 0 0 0 0.09cm rgb(81, 147, 245);
 
     position: absolute;
     transition: all 0.35s;
@@ -287,7 +274,7 @@ body.light .text:not(.left .text, .selector.text) {
     left: calc(100% + 0.7cm);
 }
 .setting .switch input:checked ~ .circle::after {
-    box-shadow: inset 0 0 0 0.3cm rgb(90, 153, 248);
+    box-shadow: inset 0 0 0 0.3cm rgb(156, 193, 248);
 }
 .setting-popup {
     display: none;
@@ -327,124 +314,110 @@ body.light .text:not(.left .text, .selector.text) {
 .setting:hover .popup-wrapper {
     transform: translateY(0) translateX(-50%); /* 在悬停时重置Y偏移，使其正好位于.setting元素的正上方 */
 }
+
+.work {
+    margin: 10px;
+    padding: 0px;
+    height: 100%;
+    width: auto;
+}
+
 /* generation area */
-.gpt-area {
-    width: 100%;
-    height: calc(100% - 50px); /* 原始高度，可以根据需要进行调整 */
-    position: relative;
-    background-color: #252526; /* VScode的暗色系颜色 */
+button {
+    background-color: rgb(81, 147, 245);
+    border-radius: 5%;
+    height: 35px;
+    width: 80px;
+    font-size: 16px;
+    border-color: rgb(88, 155, 255);
+    color: rgb(252, 252, 252);
+    cursor: pointer;
+    transition: all 0.25s;
+}
+button:hover {
+    background-color: rgb(35, 60, 97);
 }
 
-.gpt-area .selector {
-    display: block; /* 修改为块元素 */
-    margin: 0 auto; /* 居中显示 */
-    background-color: #333333; /* VScode选择框背景颜色 */
-    color: #9CDCFE; /* 文本颜色 */
-}
-
-.gpt-area textarea {
-    background-color: #3C3C3C; /* VScode的灰色 */
-    color: #FFFFFF; /* VScode默认的文本颜色 */
-    border: none;
-    padding: 10px;
-    resize: none; /* 如果您不想用户调整textarea的大小 */
-    width: 99%; /* 根据需要调整宽度 */
-    height: 100%; /* 根据需要调整高度 */
-}
-
-/* Added styles for new elements */
-.line-numbers {
-    float: left;
-    color: #9CDCFE;
-    padding-right: 5px;
-    text-align: right;
-}
-
-.buttons {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-}
-
-.gpt-buttons {
-    position: absolute;
-    top: 10px;  /* 根据需要调整距离顶部的位置 */
-    right: 10px;  /* 根据需要调整距离右边的位置 */
-    z-index: 1;  /* 确保按钮在其他元素上方 */
-}
-
-.gpt-btn {
-    background-color: #333333;  /* 按钮背景颜色 */
-    color: #9CDCFE;  /* 文本颜色 */
-    border: none;  /* 移除边框 */
-    padding: 5px 15px;  /* 上下间距为5px，左右间距为15px */
-    margin-left: 5px;  /* 按钮之间的间距 */
-    cursor: pointer;  /* 更改鼠标样式 */
-    transition: background-color 0.3s;  /* 背景颜色的过渡效果 */
-}
-
-.gpt-btn:hover {
-    background-color: #555555;  /* 悬停时的背景颜色 */
-}
 /* Workspace area */
-.generation-area{
+.input-area{
     position: relative; /* 使其子元素可以相对于它进行定位 */
-    float: left; /* 当compare被点击时，使其浮动在左侧 */
-
+    float: left;
+    height: 82.6%;
     width: 100%;
+    transition: all .25s;
+}
+.query-text {
+    background-color: #414141; 
+    color: #FFFFFF;
+    width: 99%;
+    height: 5%;
+    resize: none;
+    font-family: Arial;
+    font-size: 13pt;
+    border-width: 3px;
+    border-image: linear-gradient(to right, rgb(51, 96, 179), rgb(133, 138, 163));
+    border-image-slice: 1;
+}
+.query-text:focus {
+    outline: none;
+}
+.text-area {
+    background-color: #292929; 
+    color: #FFFFFF;
+    width: 99%;
+    height: 99.4%;
+    resize: none;
+    font-family: monospace;
+    font-size: 13pt;
+    border-image: linear-gradient(to right, rgb(133, 138, 163), rgb(51, 96, 179));
+    border-image-slice: 1;
+    border-width: 3px;
+}
+.text-area:focus {
+    outline: none;
 }
 /* AI area */
+
 .ai-text-area-container {
-    background-color: #1E1E1E; 
-    color: #FFFFFF;
     position: relative;
-    float: right; /* 当compare被点击时，使其浮动在右侧 */
-    display: none; /* 默认情况下隐藏AI text area */
-    width: 50%;
-    height: 840px;
+    float: right; 
+    height: 91.5%;
+    width: 0%;
+    overflow-x: hidden;
 }
-.ai-text-area,
-.text-area {
-    background-color: #1E1E1E; 
+.ai-text-area {
+    background-color: #414141; 
     color: #FFFFFF;
-    width: 100%;
-    height: 840px; /* 可以根据需要更改 */
+    width: 99%;
+    height: 97.3%;
+    resize: none;
+    font-family: monospace;
+    font-size: 13pt;
+    border-image: linear-gradient(to right, rgb(51, 96, 179), rgb(133, 138, 163));
+    border-image-slice: 1;
+    border-width: 3px;
 }
-
-
-button {
-    background-color: #1E1E1E; /* VScode灰色 */
-    color: #FFF; /* 白色文本 */
-    border: 1px solid #3C3C3C; /* 为元素添加一个深灰色的边框 */
-    padding: 10px;
-    margin: 10px 0;
+.ai-text-area:focus {
+    outline: none;
 }
 
 .ai-close {
     margin: 10px;
-}
-
-
-
-/*generation area*/
-.buttons {
-    display: flex;
-    justify-content: space-between;
-}
-
-.ai-close {
     position: absolute;
     top: 10px; /* 调整为需要的位置 */
     right: 10px; /* 调整为需要的位置 */
 }
-body.ai-active .generation-area {
+
+body.ai-active .input-area {
     width: 50%;
+    transition: all .25s;
 }
 
 body.ai-active .ai-text-area-container {
-    display: block;
+    /* display: block; */
+    width: 50%;
+    transition: all .25s;
 }
-.right-actions button {
-    height: 40px; // 你可以设置为你喜欢的高度
-    /* ... 其他样式 ... */
-}
+
+
+

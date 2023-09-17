@@ -2,19 +2,20 @@ const sidebar = document.getElementById('sidebar');
 const openButton = document.querySelector('.header .open');
 const closeButton = document.querySelector('.history .close');
 const modeSwitch = document.getElementById('modeSwitch');
-const textArea = document.querySelector('.text-area'); // 替换为实际的选择器
-const headerElement = document.querySelector('.header'); // 假设头部已经有一个.header的类名
-const gptArea = document.querySelector('.gpt-area'); // 替换为实际的选择器、
 const compareButton = document.querySelector('.compare');
 const generationArea = document.querySelector('.generation-area');
 const aiTextAreaContainer = document.querySelector('.ai-text-area-container');
 const aiCloseButton = document.querySelector('.ai-close');
 
 
-compareButton.addEventListener('click', () => {
-    document.body.classList.toggle('ai-active');
-});
 
+// 打开ai区
+compareButton.addEventListener('click', () => {
+    if(!document.body.classList.contains('ai-active')) {
+        document.body.classList.toggle('ai-active');
+    }
+});
+// 关闭ai区
 aiCloseButton.addEventListener('click', () => {
     document.body.classList.remove('ai-active');
 });
@@ -32,13 +33,7 @@ closeButton.addEventListener('click', () => {
 modeSwitch.addEventListener('change', () => {
     document.body.classList.toggle('light');
     if(document.body.classList.contains('light')) {
-        textArea.style.backgroundColor = '#FFFFFF'; // 设置为白色背景
-        headerElement.style.backgroundColor = '#FFFFFF'; // 设置为白色背景
-        gptArea.style.backgroundColor = '#FFFFFF'; // 设置为白色背景
     } else {
-        textArea.style.backgroundColor = ''; // 重置为原始背景颜色
-        headerElement.style.backgroundColor = ''; // 重置为原始背景颜色
-        gptArea.style.backgroundColor = ''; // 重置为原始背景颜色
     }
 });
 
