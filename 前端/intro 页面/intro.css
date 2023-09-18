@@ -1,129 +1,100 @@
 
 body {
+    font-family: Monospace, serif;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: black;
+    background-color:black ;
+
 }
 
-/* 标题图标和菜单栏 */
 header {
-    display: flex;
-    align-items: center;
-    background-color: black;
-    color: white;
-    padding: 10px 5px;
-    border-bottom: white 1px solid
+    background-color: rgb(22, 20, 20);
+    border-bottom: red 2px solid;
+    position: fixed; /* 使用 position: fixed; 使菜单栏固定 */
+    width: 100%;
+    z-index: 1; /* 使用 z-index 确保菜单栏在顶部 */
 }
 
-.logo {
-    display: flex;
+
+.top-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 1px;
+  overflow: hidden;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  border-bottom: solid 1px grey;
+        
 }
 
-.icon {
-    width: 100px;
-    height: 40px;
-}
+.top-menu ul li {
+    display: inline;
+    float: left;
 
-.top-menu {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
     
 }
-
-.top-menu li {
-    margin-right: 20px;
-}
-
-.top-menu li a {
-    margin-left: 25px;
+.top-menu ul li a {
+    display: block;
     color: white;
+    transition: .5s;
+    font-weight: 500;
+    text-shadow: 0 0 .1em, 0 0 .3em;
+    text-align: center;
+    padding: 10px 25px;
     text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
+}
+.top-menu ul li a:hover{
+    animation: .8s text-blink-effect infinite alternate;
+}
+.active {
+  background-color: #3B3B3B;
+}
     
-}
-.HelloCodeGPT{
-    color: white;
-    text-align: left;
-    font-size: 50px;
-    padding: 50px;
-}
-.box{
-    color: white;
-    font-size: 50px;
-    text-align: left;
-    padding-left:  100px;
-    width: 40vw;
-  height: 30vh;
-  background-attachment: fixed;
-  background-size: cover;
-  position: absolute;
-  left: 75%;
-  top: 40%;
-  transform: translate(-50%, -50%);
-  font-family: NeueMachina-Regular;
-  overflow: hidden;
-    box-shadow: 0px 0px 12px 20px rgba(255,255,255,0.2);
-    
-}
-.leftbox{
-    color: white;
-    font-size: 100px;
-    text-align: left;
-    padding-left:  100px;
-    width: 40vw;
-  height: 30vh;
-  background-attachment: fixed;
-  background-size: cover;
-  position: absolute;
-  left: 25%;
-  top: 40%;
-  transform: translate(-50%, -50%);
-  font-family: NeueMachina-Regular;
-  overflow: hidden;
-    box-shadow: 0px 0px 12px 20px rgba(255,255,255,0.2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+@keyframes text-blink-effect {
+    50% {
+      text-shadow: 0 0 .1em, 0 0 .3em;
+    }
+    to {
+        text-shadow: 0 0 .1em;
+    }
+  }
 
 .video-container {
-   
-    width: 80%; 
-    padding-bottom: 56.25%; 
-    position: relative;
-}
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
 
 .video-container video {
-   
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-.introduction {
-    color: white;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            transform: scale(0.8); 
+        }
+.content {
     position: relative;
-    top:400px;
-    left: 50px;
-    padding-bottom: 30px;
+    width: 50vw;
+    top: 10vh;
+    z-index: 2; 
+    padding: 20px;
     color: white;
-    /* text-shadow: 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black; */
-    text-shadow:  0 0 2px hsl(40, 28.57% , 28.82%), 
-                  0 0 2px hsl(40, 28.57% , 28.82%), 
-                  0 0 2px hsl(40, 28.57% , 28.82%), 
-                  0 0 2px hsl(40, 28.57% , 28.82%), 
-                  0 0 2px hsl(40, 28.57% , 28.82%),
-                  0 0 2px hsl(40, 28.57% , 28.82%), 
-                  0 0 2px hsl(40, 28.57% , 28.82%), 
-                  0 0 2px hsl(40, 28.57% , 28.82%),  
-                  0 0 2px hsl(40, 28.57% , 28.82%);
-    
-    
-    
- 
-    
     
 }
+.content h1{
+    padding: 20px;
+    font-size: 50px;
+    text-shadow:  1px 1px hsl(40, 28.57% , 28.82%), 2px 2px hsl(40, 28.57% , 28.82%),
+                  3px 3px hsl(40, 28.57% , 28.82%), 4px 4px hsl(40, 28.57% , 28.82%);
+}
+.content p{
+    padding: 50px;
+    font-weight: 500;
+    text-shadow: 0 0 .1em, 0 0 .3em;
+}
+
+
