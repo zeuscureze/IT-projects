@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>主界面</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/intro.css') }}">
+    <link rel="stylesheet" href="./intro.css">
 </head>
     
 
@@ -14,16 +14,16 @@
         <nav class="top-menu">
             <ul>
                 <li><a href="#">CodeGPT</a></li>
-                <li><a class="active" href="{{ url_for("index.intro") }}">Introduction</a></li>
-                <li><a href="{{ url_for("auth.login") }}">Sign In/ up</a></li>
-                <li><a  href="{{ url_for("qa.blogs") }}">Q&A</a></li>
+                <li><a class="active" href="#">Introduction</a></li>
+                <li><a href="#">Sign In/ up</a></li>
+                <li><a  href="#">Q&A</a></li>
             </ul>
         </nav>
     </header>
     
     
     <div class="video-container">
-        <video src="{{ url_for('static', filename='images/handwrite.mov') }}" autoplay muted playsinline loop controlsList="nodownload" poster="video-poster.jpg"></video>
+        <video src="handwrite.mov" autoplay muted playsinline loop controlsList="nodownload" poster="video-poster.jpg"></video>
     </div>
     <div class="content">
         <h1>Welcome to Code GPT</h1>
