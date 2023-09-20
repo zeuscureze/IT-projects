@@ -8,6 +8,50 @@ body {
   background-color: rgb(22, 30, 49);
 }
 
+.top-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 1px;
+  overflow: hidden;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  width: 100%;
+        
+}
+
+.top-menu ul li {
+    display: inline;
+    float: left;
+
+    
+}
+.top-menu ul li a {
+    display: block;
+    color: white;
+    transition: .5s;
+    font-weight: 500;
+    text-shadow: 0 0 .1em, 0 0 .3em;
+    text-align: center;
+    padding: 10px 25px;
+    text-decoration: none;
+}
+.top-menu ul li a:hover{
+    animation: .8s text-blink-effect infinite alternate;
+}
+.active {
+  background-color: #3B3B3B;
+}
+    
+@keyframes text-blink-effect {
+    50% {
+      text-shadow: 0 0 .1em, 0 0 .3em;
+    }
+    to {
+        text-shadow: 0 0 .1em;
+    }
+  }
+
 .box {
   width: 75vw;
   height: 80vh;
@@ -248,9 +292,10 @@ body {
     transition: all .35s;
     border-radius: 50px;
     z-index:-1;
-    background: linear-gradient(45deg,red,yellow,orange,cyan,red);
+    background: linear-gradient(45deg,grey,white);
     background-size: 1000%;
     animation: smooth 40s linear infinite;
+    transition: 0.3s;
 
   
 }
@@ -266,32 +311,7 @@ body {
 .box .forms .fogot-pwd .form .btn:hover {
   box-shadow: 0px 0px 15px black; 
 }
-.box .forms .login .form .other-login,
-.box .forms .register .form .other-login,
-.box .forms .fogot-pwd .form .other-login {
-  color: white;
-  margin-top: 5vw;
-  font-weight: 900;
-  display: flex;
-  align-items: baseline;
-}
-.box .forms .login .form .other-login .login-img img,
-.box .forms .register .form .other-login .login-img img,
-.box .forms .fogot-pwd .form .other-login .login-img img {
-  width: 40px;
-  height: 40px;
-  vertical-align: middle;
-  margin-left: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  vertical-align: middle;
-}
-.box .forms .login .form .other-login span,
-.box .forms .register .form .other-login span,
-.box .forms .fogot-pwd .form .other-login span {
-  display: inline-block;
-  margin-right: 2vw;
-}
+
 
 
 .box .forms .login {
