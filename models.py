@@ -28,3 +28,25 @@ class QuestionModel(db.Model):
     author = db.relationship(UserModel, backref="questions")
 
 
+class AnswerModel(db.Model):
+    __tablename__ = "answer"
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    content = db.Column(db.Text, nullable=False)
+    create_time = db.Column(db.DateTime, default=datetime.now)
+
+    question_id = db.Column(db.Integer, db.ForeignKey("question.id"))
+    question = db.relationship(QuestionModel, backref=db.backref("answers", order_by=create_time.desc()))
+
+    author_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    author = db.relationship(UserModel, backref="answers")
+
+
+class HistoryModel(db.Model):
+    __tablename__ = "history"
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    content = db.Column(db.String(300), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    user = db.relationship(UserModel, backref="histories")
+
+
+

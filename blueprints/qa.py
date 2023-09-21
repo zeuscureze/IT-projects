@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, jsonify, redirect, url_for, session
 from .forms import QuestionForm
-from models import QuestionModel
+from models import QuestionModel, AnswerModel
 from exts import db
 from flask import request
 
@@ -18,3 +18,10 @@ def blogs():
 def detail(qa_id):
     question = QuestionModel.query.get(qa_id)
     return render_template("target-page.html", question=question)
+
+
+@bp.route("/search")
+def search():
+    q = request.args.get("q")
+    questions = QuestionModel.query.filter(QuestionModel.title.contains(q)).all()
+    return render_template("Q&A.html", questions=questions)
