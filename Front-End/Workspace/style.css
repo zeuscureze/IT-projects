@@ -304,7 +304,7 @@ body .work .input-area {
     width: 100%;
     height: 90%;
     float: left;
-    position: relative; /* 使其子元素可以相对于它进行定位 */
+    position: relative;
     transition: all .25s;
 }
 .home .work .query-text {
@@ -347,7 +347,7 @@ body .work .input-area {
 .home .compare {
     position: absolute;
     bottom: 10px;
-    left: 15px;
+    left: 45px;
 }
 body .ai-text-area-container {
     position: relative;

@@ -1,18 +1,9 @@
+<!-- The sidebar part is based on https://codepen.io/IndArya_1234/pen/poZBBOB by Indian Arya -->
+<!-- input area uses CodeMirror package to create a code editor -->
 <!DOCTYPE html>
 <html lang="en" >
-<body class="dark">
-<head>
-  <meta charset="UTF-8">
-  <title>CodeGPT-Workspace</title>
-  <link rel="stylesheet" href="./style.css">
-
-</head>
-<body>
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type=" x-icon" href="logo.png">
     <!----======== CSS ======== -->
@@ -20,20 +11,37 @@
     
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    
-    <!--<title>Dashboard Sidebar Menu</title>--> 
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- Codemirror package -->
+    <script src="./codemirror-5.65.15/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="./codemirror-5.65.15/lib/codemirror.css">
+    <script src="./codemirror-5.65.15/mode/javascript/javascript.js"></script>
+    <link rel="stylesheet" href="./codemirror-5.65.15/theme/ayu-mirage.css">
+    <link rel="stylesheet" href="./codemirror-5.65.15/theme/neo.css">
+    <!-- barcket match -->
+    <script src="./codemirror-5.65.15/addon/edit/matchbrackets.js"></script>
+
+    <script src="./codemirror-5.65.15/mode/python/python.js"></script>
+    <!-- <script src="./codemirror-5.65.15/mode/sql/sql.js"></script> -->
+
+    <!-- <link rel="stylesheet" href="./codemirror-5.65.15/addon/hint/show-hint.css">
+    <script src="./codemirror-5.65.15/addon/hint/show-hint.js"></script>
+    <script src="./codemirror-5.65.15/addon/hint/sql-hint.js"></script>
+     -->
+    <title>CodeGPT-Workspace</title>
 </head>
-<body>
+<body class="dark">
     <nav class="sidebar close">
         <header>
             <div class="image-text">
                 <span class="image">
-                    <!--<img src="logo.png" alt="">-->
+                    <img src="logo.png" alt="">
                 </span>
 
                 <div class="text logo-text">
                     <span class="name">CODE GPT</span>
-                    <span class="profession">Programming Trainer</span>
+                    <span class="profession">Programming AI</span>
                 </div>
             </div>
 
@@ -68,14 +76,14 @@
                     <br>
                     <hr>
                     <br>
-                    <!-- 历史记录 -->
+                    <!-- history -->
                     <li class="nav-link">
                         <i class='bx bx-time-five icon'></i>
                         <span class="text nav-text">History</span>
                     </li>
                     <br>
                     
-                    <ul id="history" class="text nav-text history">这是历史记录列表</ul>
+                    <ul id="history" class="text nav-text history">This is history list</ul>
 
 
                    
@@ -112,10 +120,10 @@
         <div class="text"><p>Workspace</p></div>
         <div class="work">
             <!-- input area -->
-            <textarea class="query-text text" readonly>这是显示query的地方</textarea>
+            <textarea class="query-text text" readonly>This is query</textarea>
             <br><br>
             <div class="input-area">
-                <textarea class="text-area text" placeholder="Please input your code here"></textarea>
+                <textarea class="text-area text" id="editor" placeholder="Please input your code here"></textarea>
                 <div class="buttons">
                     <button class="compare bx bx-check-double"></button>
                 </div>
@@ -123,16 +131,12 @@
 
             <!-- AI area -->
             <div class="ai-text-area-container">
-                <textarea class="ai-text-area text" readonly>这是显示答案的地方</textarea>
+                <textarea class="ai-text-area text" readonly>This is answer</textarea>
                 <button class="ai-close bx bx-x"></button>
             </div>
         </div>
     </section>
 
-</body>
-</html>
-<!-- partial -->
-  <script  src="./script.js"></script>
-
+    <script src="./script.js"></script>
 </body>
 </html>
