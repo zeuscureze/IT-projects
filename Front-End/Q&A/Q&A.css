@@ -1,21 +1,21 @@
 /* Q&A.css */
 body {
-    font-family: Monospace, serif;
-    margin: 0;
-    padding: 0;
-    background-color:#1E1E1E ;
-
+  font-family: Monospace, serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1E1E1E;
 }
 
+/* Header styles */
 header {
-    background-color: rgb(22, 20, 20);
-    border-bottom: red 2px solid;
-    position: fixed; /* 使用 position: fixed; 使菜单栏固定 */
-    width: 100%;
-    z-index: 1; /* 使用 z-index 确保菜单栏在顶部 */
+  background-color: rgb(22, 20, 20);
+  border-bottom: red 2px solid;
+  position: fixed; /* Use position: fixed; to make the menu bar fixed */
+  width: 100%;
+  z-index: 1; /* Use z-index to ensure the menu bar is on top */
 }
 
-
+/* Top menu styles */
 .top-menu ul {
   list-style-type: none;
   margin: 0;
@@ -25,248 +25,287 @@ header {
   position: absolute;
   top: 0;
   width: 100%;
-        
 }
 
 .top-menu ul li {
-    display: inline;
-    float: left;
+  display: inline;
+  float: left;
+}
 
-    
-}
 .top-menu ul li a {
-    display: block;
-    color: white;
-    transition: .5s;
-    font-weight: 500;
-    text-shadow: 0 0 .1em, 0 0 .3em;
-    text-align: center;
-    padding: 10px 25px;
-    text-decoration: none;
+  display: block;
+  color: white;
+  transition: .5s;
+  font-weight: 500;
+  text-shadow: 0 0 .1em, 0 0 .3em;
+  text-align: center;
+  padding: 10px 25px;
+  text-decoration: none;
 }
+
 .top-menu ul li a:hover{
-    animation: .8s text-blink-effect infinite alternate;
+  animation: .8s text-blink-effect infinite alternate;
 }
+
 .active {
   background-color: #3B3B3B;
 }
-    
+
+/* Keyframes for text blinking effect */
 @keyframes text-blink-effect {
-    50% {
-      text-shadow: 0 0 .1em, 0 0 .3em;
-    }
-    to {
-        text-shadow: 0 0 .1em;
-    }
+  50% {
+    text-shadow: 0 0 .1em, 0 0 .3em;
   }
+  to {
+    text-shadow: 0 0 .1em;
+  }
+}
 
-
+/* Q&A title styles */
 .Q_A {
-    color: white;
-    padding-top: 60px;
-    text-align: center;
-    font-size: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: 5s text-blink-effect infinite alternate;
+  color: white;
+  padding-top: 60px;
+  text-align: center;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: 5s text-blink-effect infinite alternate;
 }
 
+/* Search container styles */
+.search-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.search-container form {
+  display: inline-block;
+}
+
+.search-container input[type="text"] {
+  padding: 10px;
+  border: none;
+  border: 2px solid grey;
+  margin-right: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 40vw;
+  background-color: ghostwhite;
+}
+
+.search-container button[type="submit"] {
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: .5s;
+  font-weight: 500;
+  text-align: center;
+  padding: 10px 25px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.search-container button[type="submit"] i {
+  margin-left: 5px; /* Adjust the spacing between the icon and text */
+  font-size: 16px; /* Adjust the icon size */
+  color: #333; /* Adjust the icon color */
+}
+
+.search-container button[type="submit"]:hover {
+  animation: .8s text-blink-effect infinite alternate;
+}
+
+/* Question selection dropdown styles */
 .question_select{
-    float: left;
-    transform: translateX(20px);
-    position: relative;
-    max-width: 320px;
-    width: 20%;
-    height: 20%;
-    border-radius: 5px;
-    margin: 80px auto 30px;
-    
-    
+  float: left;
+  transform: translateX(20px);
+  position: relative;
+  max-width: 320px;
+  width: 20%;
+  height: 20%;
+  border-radius: 5px;
+  margin: 80px auto 30px;
 }
+
 .select_btn{
-    display: flex;
-    height: 30px;
-    align-items: center;
-    padding: 0 11px;
-    border-radius: 10px;
-    cursor: pointer;
-    color: white;
-    box-shadow: 6px -4px 66px 2px rgba(255,255,255,0.41);
-    justify-content: space-between;
+  display: flex;
+  height: 30px;
+  align-items: center;
+  padding: 0 11px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  box-shadow: 6px -4px 66px 2px rgba(255,255,255,0.41);
+  justify-content: space-between;
 }
+
 .select_btn .text_btn{
-    display: flex;
-    font-size: 20px;
+  display: flex;
+  font-size: 20px;
 }
 
 .select_btn .arrow_down{
-    height: 21px;
-    width: 22px;
-    display: flex;
-    background: grey;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    border-radius: 50%;
-    transition: 0.3s;
-    
-    
-}
-.select_btn.close .arrow_down{
-    transform: rotate(-180deg);
+  height: 21px;
+  width: 22px;
+  display: flex;
+  background: grey;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  border-radius: 50%;
+  transition: 0.3s;
 }
 
+.select_btn.close .arrow_down{
+  transform: rotate(-180deg);
+}
+
+/* Dropdown list styles */
 .list{
-    position: relative;
-    margin-top: 15px;
-    background-color: black;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-    display: block;
+  position: relative;
+  margin-top: 15px;
+  background-color: black;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  display: block;
 }
+
 .select_btn.close ~ .list{
-    display: none;
+  display: none;
 }
+
 .list .list_items{
-    display: flex;
-    align-items: center;
-    list-style: none;
-    height: 30px;
-    cursor: pointer;
-    transition: 0.3s;
-    padding: 0 15px;
-    border-radius: 5px;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  height: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 0 15px;
+  border-radius: 5px;
 }
+
 .list .list_items:hover{
-    background-color: dimgrey;
+  background-color: dimgrey;
 }
+
 .list_items .item_text{
-    font-size: 16px;
-    font-weight: 400;
-    color: lightpink;
+  font-size: 16px;
+  font-weight: 400;
+  color: lightpink;
 }
 
 .list_items .checkbox{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 16px;
-    width: 16px;
-    border-radius: 4px;
-    margin-right: 12px;
-    border: 1px solid #c0c0c0;
-    transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16px;
+  width: 16px;
+  border-radius: 4px;
+  margin-right: 12px;
+  border: 1px solid #c0c0c0;
+  transition: all 0.3s ease-in-out;
 }
 
 .list_items.checked .checkbox{
-    background-color: black;
-    border-color: aquamarine;
+  background-color: black;
+  border-color: aquamarine;
 }
+
 .checkbox .check_icon{
-    font-size: 11px;
-    transform: scale(0);
-    transition: all 0.3s ease-in-out;
-    
+  font-size: 11px;
+  transform: scale(0);
+  transition: all 0.3s ease-in-out;
 }
 
 .list_items.checked .check_icon{
-    transform: scale(1);
+  transform: scale(1);
 }
+
+/* Media queries for responsive design */
 @media (max-width: 768px) {
-    .question_select {
-        display: none;
-    }
+  .question_select {
+    display: none;
+  }
 
-    .list {
-        max-width: 100%;
-        width: auto; 
-        margin-top: 20px; 
-    }
-    .Q_A {
-        display: none;
-    }
+  .list {
+    max-width: 100%;
+    width: auto;
+    margin-top: 20px;
+  }
 
-   
-    .question_container {
-        width: 90vw;
-        height: 80vh;
-        /* 调整 top、left、right、bottom 的值 */
-        top: 10%;
-        left: 5%;
-        right: 5%;
-        bottom: 10%;
-    }
-    .question_box {
-        padding: 15px; /* 设置内边距 */
-        margin-bottom: 20px; /* 设置底部外边距，用于和其他问题框分隔开 */
-    }
+  .Q_A {
+    display: none;
+  }
 
-    .question_box h2 {
-        font-size: 10px; /* 设置标题字体大小 */
-   
-    }
+  .question_container {
+    width: 90vw;
+    height: 80vh;
+    /* Adjust top, left, right, and bottom values */
+    top: 10%;
+    left: 5%;
+    right: 5%;
+    bottom: 10%;
+  }
+  .question_box {
+    padding: 15px; /* Adjust padding */
+    margin-bottom: 20px; /* Adjust bottom margin to separate from other question boxes */
+  }
 
-    .question_box p {
-        font-size: 10px; /* 设置问题描述字体大小 */
-        
-    }
+  .question_box h2 {
+    font-size: 10px; /* Adjust title font size */
+  }
 
-
+  .question_box p {
+    font-size: 10px; /* Adjust question description font size */
+  }
 }
 
+/* Question container styles */
 .question_container {
-    width: 60vw;
-    height: 60vh;
-    border: 2% solid grey; 
-    position: absolute;
-    top: 20%;
-    left: 25%;
-    right: 20%;
-    bottom: 20%;
-    border-radius: 20px;
-
-        
+  width: 60vw;
+  height: 60vh;
+  border: 2% solid grey; 
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  right: 20%;
+  bottom: 20%;
+  border-radius: 20px;
 }
 
+/* Question box styles */
 .question_container .question_box {
-    display: flex;
-    flex-direction: column; 
-    margin: 15px;
-    border-bottom: solid pink 1px;
-    
+  display: flex;
+  flex-direction: column; 
+  margin: 15px;
+  border-bottom: solid pink 1px;
 }
 
-
-
-
-
-
-
+/* Question title styles */
 .question_container .question_box h2 {
-    color: white;
-    font-size: 20px; 
-    margin: 0; 
+  color: white;
+  font-size: 20px; 
+  margin: 0; 
 }
 
-
+/* Question description styles */
 .question_container .question_box p {
-    color: whitesmoke;
-    font-size: 15px; 
-    margin: 10px 15px;; 
-}
-a{
-    color: white;
-    text-decoration: none;
+  color: whitesmoke;
+  font-size: 15px; 
+  margin: 10px 15px;; 
 }
 
-.question_box a:hover{
-    color: hotpink;
+/* Hyperlink styles */
+a {
+  color: white;
+  text-decoration: none;
 }
 
-
-
-
-
-
+/* Hover effect for hyperlinks in question box */
+.question_box a:hover {
+  color: hotpink;
+}

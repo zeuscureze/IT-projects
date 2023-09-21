@@ -51,7 +51,7 @@ def login():
             return redirect(url_for("auth.login"))
         else:
             print(form.errors)
-            return "注册失败"  # redirect(url_for("auth.login"))
+            return f"注册失败 {form.errors}"  # redirect(url_for("auth.login"))
 
 
 @bp.route("/logout")

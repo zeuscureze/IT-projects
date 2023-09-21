@@ -1,74 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for character set and responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question and Answer</title>
+
+    <!-- Link to the external stylesheet for styling -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/Q&A.css') }}">
-    <script src="{{ url_for('static', filename='jquery/jquery.3.6.min.js') }}"></script>
+
+    <!-- Favicon for the browser tab -->
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+
+    <!-- Include Font Awesome kit for icons -->
     <script src="https://kit.fontawesome.com/442f5b06e6.js" crossorigin="anonymous"></script>
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-
 </head>
-
 <body>
-    <header>
-        <nav class="top-menu">
-            <ul>
-                <li><a href="#">CodeGPT</a></li>
-                <li><a href="/">Introduction</a></li>
-                <li><a href="{{ url_for("auth.login") }}">Sign In/ up</a></li>
-                <li><a class="active" href="{{ url_for("qa.blogs") }}">Q&A</a></li>
-                <li style="float:right"><a href="#"> Ask a Question</a></li>
-            </ul>
-        </nav>
-    </header>
-    <div class="Q_A">Question and Answer</div>
-    
-    <div class="question_select">
-        <div class="select_btn">
-            <span class="text_btn">Question Filter</span>
-            <span class="arrow_down">
+<!-- Header Section -->
+<header>
+    <nav class="top-menu">
+        <ul>
+            <!-- Navigation links -->
+            <li><a href="#">CodeGPT</a></li>
+            <li><a href="/">Introduction</a></li>
+            <li><a href="{{ url_for("auth.login") }}">Sign In/ up</a></li>
+            <li><a class="active" href="{{ url_for("qa.blogs") }}">Q&A</a></li>
+            <li style="float:right"><a href="#"> Ask a Question</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Title and Search Section -->
+<div class="Q_A">Question and Answer</div>
+<div class="search-container">
+    <form method="GET" action="{{ url_for('qa.search') }}" >
+        <!-- Input field for search query -->
+        <input type="text" id="search" name="q" placeholder="Search...">
+
+        <!-- Submit button for search -->
+        <button type="submit" class="search-button">
+            <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
+        </button>
+    </form>
+</div>
+
+<!-- Question Filter Dropdown Section -->
+<div class="question_select">
+    <div class="select_btn">
+        <!-- Dropdown button for question filter -->
+        <span class="text_btn">Question Filter</span>
+        <span class="arrow_down">
                 <i class="fa-sharp fa-solid fa-chevron-up" style="color: #ffffff;"></i>
             </span>
-        </div>
-        <ul class="list">
-            <li class="list_items">
-                <span class = "checkbox">
-                    <i class="fa-solid fa-check check_icon" style="color: #ffffff;"></i>
-                </span>
-                    <span class = "item_text">All Question</span>
-            </li>
-            <li class="list_items">
-                <span class = "checkbox">
-                    <i class="fa-solid fa-check check_icon" style="color: #ffffff;"></i>
-                </span>
-                    <span class = "item_text">Answers</span>
-            </li>
-            <li class="list_items">
-                <span class = "checkbox">
-                    <i class="fa-solid fa-check check_icon" style="color: #ffffff;"></i>
-                </span>
-                    <span class = "item_text">No Answers</span>
-            </li>
-            
-            
-        </ul>
-        
     </div>
-    <div class="question_container">
-        <ul class="question-ul">
-        {% for question in questions %}
-        <div class="question_box">
-            <h2><a href="{{ url_for('qa.detail', qa_id=question.id) }}">{{ question.title }}</a></h2>
-            <p>{{ question.content }}</p>
-        </div>
-        {% endfor %}
-        </ul>
-    </div>
-    
+    <ul class="list">
+        <!-- List items for question filter options -->
+        <li class="list_items">
+            <!-- Checkbox icon -->
+            <span class="checkbox">
+                    <i class="fa-solid fa-check check_icon" style="color: #ffffff;"></i>
+                </span>
+            <!-- Filter option text -->
+            <span class="item_text">All Questions</span>
+        </li>
+        <li class="list_items">
+                <span class="checkbox">
+                    <i class="fa-solid fa-check check_icon" style="color: #ffffff;"></i>
+                </span>
+            <span class="item_text">Answers</span>
+        </li>
+        <li class="list_items">
+                <span class="checkbox">
+                    <i class="fa-solid fa-check check_icon" style="color: #ffffff;"></i>
+                </span>
+            <span class="item_text">No Answers</span>
+        </li>
+    </ul>
+</div>
 
-    <script>
+<!-- Question Container Section -->
+<div class="question_container">
+    <ul class="question-ul" id="questionList">
+        {% for question in questions %}
+            <div class="question_box {% if question.answers %}has_answers{% endif %}">
+                <h2><a href="{{ url_for('qa.detail', qa_id=question.id) }}">{{ question.title }}</a></h2>
+                <!-- Question description -->
+                <p>{{ question.content }}</p>
+            </div>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- JavaScript Section -->
+<script>
     const select_btn = document.querySelector(".select_btn");
     const list_items = document.querySelectorAll(".list_items");
     const text_btn = document.querySelector(".text_btn");
@@ -79,26 +103,35 @@
 
     list_items.forEach(list_item => {
         list_item.addEventListener("click", () => {
-           
             list_items.forEach(item => {
                 if (item !== list_item) {
                     item.classList.remove("checked");
                 }
             });
 
-            // 切换选择状态
+            // Toggle selection state
             list_item.classList.toggle("checked");
 
-           
+            // Update the displayed filter option
             const optionName = list_item.textContent.trim();
             text_btn.textContent = optionName;
+
+            const hasAnswers = list_item.textContent.trim() === "Answers";
+            const noAnswers = list_item.textContent.trim() === "No Answers";
+
+            document.querySelectorAll(".question_box").forEach(questionBox => {
+                questionBox.style.display = "block"; // 默认显示所有问题
+
+                if (hasAnswers && !questionBox.classList.contains("has_answers")) {
+                    questionBox.style.display = "none"; // 隐藏没有答案的问题
+                }
+
+                if (noAnswers && questionBox.classList.contains("has_answers")) {
+                    questionBox.style.display = "none"; // 隐藏有答案的问题
+                }
+            });
         });
     });
-    
 </script>
-
-
-
-    
 </body>
 </html>

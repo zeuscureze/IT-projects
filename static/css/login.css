@@ -1,17 +1,69 @@
-
+/* Reset default padding and margin for all elements */
 * {
   padding: 0;
   margin: 0;
 }
 
+/* Set the background color of the entire page */
 body {
   background-color: rgb(22, 30, 49);
 }
 
+/* Style for the top menu bar */
+.top-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 1px;
+  overflow: hidden;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+/* Style for individual items in the top menu */
+.top-menu ul li {
+  display: inline;
+  float: left;
+}
+
+/* Style for links in the top menu */
+.top-menu ul li a {
+  display: block;
+  color: white;
+  transition: .5s;
+  font-weight: 500;
+  text-shadow: 0 0 .1em, 0 0 .3em;
+  text-align: center;
+  padding: 10px 25px;
+  text-decoration: none;
+}
+
+/* Add a hover effect to the top menu links */
+.top-menu ul li a:hover {
+  animation: .8s text-blink-effect infinite alternate;
+}
+
+/* Style for the active menu item */
+.active {
+  background-color: #3B3B3B;
+}
+
+/* Keyframes for text blinking effect */
+@keyframes text-blink-effect {
+  50% {
+    text-shadow: 0 0 .1em, 0 0 .3em;
+  }
+  to {
+    text-shadow: 0 0 .1em;
+  }
+}
+
+/* Style for the main content box */
 .box {
   width: 75vw;
   height: 80vh;
-  background: url(/static/images/jb.png);
+  background: url(/static/images/bc.png);
   background-attachment: fixed;
   background-size: cover;
   position: absolute;
@@ -21,8 +73,10 @@ body {
   border-radius: 30px;
   font-family: NeueMachina-Regular;
   overflow: hidden;
-    box-shadow: 0px 0px 12px 20px rgba(255,255,255,0.2);
+  box-shadow: 0px 0px 12px 20px rgba(255, 255, 255, 0.2);
 }
+
+/* Style for the forms inside the content box */
 .box .forms {
   width: 50%;
   height: 100%;
@@ -34,7 +88,8 @@ body {
   box-sizing: border-box;
   position: relative;
 }
-/*# 对于login 和 sign up 按钮的优化，包括鼠标悬停时样式改变，下划线 */
+
+/* Style for login, register, and forgot password buttons, including hover effect and underline */
 .box .forms .tips {
   width: 70%;
   height: 10%;
@@ -42,6 +97,7 @@ body {
   font-size: 25px;
   margin: 4vh;
 }
+
 .box .forms .tips span {
   margin: 0 10px 0 0;
   cursor: pointer;
@@ -49,43 +105,50 @@ body {
   transition: 0.1s;
   color: white;
 }
+
 .box .forms .tips span:hover {
   border-bottom: 4px solid rgb(249, 177, 122);
   color: white;
 }
+
 .box .forms .tips .login-btn {
   border-bottom: 4px solid white;
   color: white;
 }
-/*# login register fogotpwd 这三个界面和框架之间的距离 */
+
+/* Adjust the spacing between login, register, and forgot password sections */
 .box .forms .login,
 .box .forms .register,
 .box .forms .fogot-pwd {
   width: 70%;
   top: 50%;
 }
-/*# Hello 和 One click triple connection这两句话的位置设置 */
+
+/* Adjust the position of "Hello" and "One-click triple connection" headings */
 .box .forms .login .form-title h1,
 .box .forms .register .form-title h1,
 .box .forms .fogot-pwd .form-title h1 {
   margin-bottom: 4%;
-    margin-top: 5%;
+  margin-top: 5%;
 }
-/*# 输入框和上一个block之间距离的调整 */
+
+/* Adjust the spacing between input fields and the previous block */
 .box .forms .login .form,
 .box .forms .register .form,
 .box .forms .fogot-pwd .form {
   margin-top: 2vw;
 }
-/*# 输入框前缀 */
+
+/* Add prefixes to input fields */
 .box .forms .login .form .username::before,
 .box .forms .register .form .username::before,
 .box .forms .fogot-pwd .form .username::before {
   content: "UserName";
 }
+
 .box .forms .fogot-pwd .form .email::before,
-.box .forms .register .form .email::before{
-    content: "Email";
+.box .forms .register .form .email::before {
+  content: "Email";
 }
 
 .box .forms .login .form .password::before,
@@ -93,21 +156,25 @@ body {
 .box .forms .fogot-pwd .form .password::before {
   content: "Password";
 }
+
 .box .forms .register .form .conform-password::before,
 .box .forms .fogot-pwd .form .conform-password::before {
-  content: "Conform Password";
+  content: "Confirm Password";
 }
-/*#  对于验证码的位置和前缀的调整 */
+
+/* Adjust the position and prefixes for the verification code */
 .box .forms .login .form .code,
 .box .forms .register .form .code,
 .box .forms .fogot-pwd .form .code {
   position: relative;
 }
+
 .box .forms .login .form .code::before,
 .box .forms .register .form .code::before,
 .box .forms .fogot-pwd .form .code::before {
   content: "Code";
 }
+
 .box .forms .login .form .code .veri-code-tips,
 .box .forms .register .form .code .veri-code-tips,
 .box .forms .fogot-pwd .form .code .veri-code-tips {
@@ -117,7 +184,8 @@ body {
   color: rgb(113, 123, 185);
   cursor: pointer;
 }
-/*#  输入框的大小，位置，动画 */
+
+/* Style for input fields, including size, position, and animation */
 .box .forms .login .form .input-item,
 .box .forms .register .form .input-item,
 .box .forms .fogot-pwd .form .input-item {
@@ -126,6 +194,7 @@ body {
   margin: 10px 0;
   transition: 0.5s;
 }
+
 .box .forms .login .form .input-item::before,
 .box .forms .register .form .input-item::before,
 .box .forms .fogot-pwd .form .input-item::before {
@@ -135,7 +204,8 @@ body {
   padding: 10px 5px 1px 20px;
   font-size: 14px;
 }
-/*#  输入框的字体颜色，大小，位置. 输入框的大小颜色边框 */
+
+/* Style for input field text color, size, position, and border */
 .box .forms .login .form .input-item input,
 .box .forms .register .form .input-item input,
 .box .forms .fogot-pwd .form .input-item input {
@@ -153,23 +223,26 @@ body {
 .box .forms .login .form .input-item input:focus,
 .box .forms .register .form .input-item input:focus,
 .box .forms .fogot-pwd .form .input-item input:focus {
-  border-left: 3px solid coral ;
-    
+  border-left: 3px solid coral;
 }
 
+/* Style for the "Remember Password" and "Forgot Password" sections */
 .box .forms .login .form .other-select,
 .box .forms .register .form .other-select,
 .box .forms .fogot-pwd .form .other-select {
   display: flex;
   justify-content: space-between;
-  color:floralwhite;
+  color: floralwhite;
   margin-top: 1vw;
 }
+
+/* Style for the "Remember Password" checkbox and related tips */
 .box .forms .login .form .other-select #check:checked + .rem-pwd-tips,
 .box .forms .register .form .other-select #check:checked + .rem-pwd-tips,
 .box .forms .fogot-pwd .form .other-select #check:checked + .rem-pwd-tips {
   color: #fff;
 }
+
 .box .forms .login .form .other-select input[type=checkbox],
 .box .forms .register .form .other-select input[type=checkbox],
 .box .forms .fogot-pwd .form .other-select input[type=checkbox] {
@@ -180,6 +253,7 @@ body {
   border: 0;
 }
 
+/* Style for the checkbox's appearance */
 .box .forms .login .form .other-select input[type=checkbox]::after,
 .box .forms .register .form .other-select input[type=checkbox]::after,
 .box .forms .fogot-pwd .form .other-select input[type=checkbox]::after {
@@ -195,6 +269,8 @@ body {
   background-color: white;
   content: " ";
 }
+
+/* Style for the checked checkbox */
 .box .forms .login .form .other-select input[type=checkbox]:checked::after,
 .box .forms .register .form .other-select input[type=checkbox]:checked::after,
 .box .forms .fogot-pwd .form .other-select input[type=checkbox]:checked::after {
@@ -204,20 +280,24 @@ body {
   line-height: 20px;
   background-color: white;
   border: 1px solid white;
- 
 }
-/*#  鼠标样式改变当悬停在特定文字上时 */
+
+/* Change cursor style on hover for certain text */
 .box .forms .login .form .other-select .rem-pwd .rem-pwd-tips,
 .box .forms .register .form .other-select .rem-pwd .rem-pwd-tips,
 .box .forms .fogot-pwd .form .other-select .rem-pwd .rem-pwd-tips {
   cursor: pointer;
 }
+
+/* Style for the "Forgot Password" button */
 .box .forms .login .form .other-select .fogot-pwd-btn,
 .box .forms .register .form .other-select .fogot-pwd-btn,
 .box .forms .fogot-pwd .form .other-select .fogot-pwd-btn {
   cursor: pointer;
   color: white;
 }
+
+/* Style for general buttons */
 .box .forms .login .form .btn,
 .box .forms .register .form .btn,
 .box .forms .fogot-pwd .form .btn {
@@ -234,82 +314,64 @@ body {
   transition: 0.3s;
   margin-top: 2vw;
   font-family: NeueMachina-Regular;
-    
 }
 
+/* Create a gradient effect for the buttons */
 .box .forms .login .form .btn,
 .box .forms .register .form .btn,
-.box .forms .fogot-pwd .form .btn{
-    content: "";
-    width:42%;
-    height: 50px;
-    top:-4px;
-    left:-4px;
-    transition: all .35s;
-    border-radius: 50px;
-    z-index:-1;
-    background: linear-gradient(45deg,red,yellow,orange,cyan,red);
-    background-size: 1000%;
-    animation: smooth 40s linear infinite;
-
-  
+.box .forms .fogot-pwd .form .btn::before {
+  content: "";
+  width: 42%;
+  height: 50px;
+  top: -4px;
+  left: -4px;
+  transition: all .35s;
+  border-radius: 50px;
+  z-index: -1;
+  background: linear-gradient(45deg, grey, white);
+  background-size: 1000%;
+  animation: smooth 40s linear infinite;
+  transition: 0.3s;
 }
 
-@keyframes smooth{
-    0%{background-position: 0 0;}
-    100%{background-position: 1000% 0}
+/* Keyframes for the gradient animation */
+@keyframes smooth {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1000% 0;
+  }
 }
 
-
+/* Add a hover effect to buttons */
 .box .forms .login .form .btn:hover,
 .box .forms .register .form .btn:hover,
 .box .forms .fogot-pwd .form .btn:hover {
-  box-shadow: 0px 0px 15px black; 
-}
-.box .forms .login .form .other-login,
-.box .forms .register .form .other-login,
-.box .forms .fogot-pwd .form .other-login {
-  color: white;
-  margin-top: 5vw;
-  font-weight: 900;
-  display: flex;
-  align-items: baseline;
-}
-.box .forms .login .form .other-login .login-img img,
-.box .forms .register .form .other-login .login-img img,
-.box .forms .fogot-pwd .form .other-login .login-img img {
-  width: 40px;
-  height: 40px;
-  vertical-align: middle;
-  margin-left: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  vertical-align: middle;
-}
-.box .forms .login .form .other-login span,
-.box .forms .register .form .other-login span,
-.box .forms .fogot-pwd .form .other-login span {
-  display: inline-block;
-  margin-right: 2vw;
+  box-shadow: 0px 0px 15px black;
 }
 
-
+/* Style for the login form */
 .box .forms .login {
   position: absolute;
-    top: 20%;
+  top: 20%;
   opacity: 1;
   z-index: 10;
   animation: into 1s ease;
 }
+
+/* Style for the register form */
 .box .forms .register {
   position: absolute;
-    top: 80px;
+  top: 80px;
   opacity: 0;
   z-index: -1;
 }
+
+/* Style for the forgot password form */
 .box .forms .fogot-pwd {
   position: absolute;
-     top: 140px;
+  top: 140px;
   opacity: 0;
   z-index: -1;
 }

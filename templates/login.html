@@ -4,191 +4,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Document</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <script src="{{ url_for('static', filename='jquery/jquery.3.6.min.js') }}"></script>
 </head>
 
 <body>
+    <header>
+        <!-- Navigation Bar -->
+        <nav class="top-menu">
+        <ul>
+            <li><a href="#">CodeGPT</a></li>
+            <li><a class="active" href="{{ url_for("index.intro") }}">Introduction</a></li>
+            <li><a href="{{ url_for("auth.login") }}">Sign In/ up</a></li>
+            <li><a href="{{ url_for("qa.blogs") }}">Q&A</a></li>
+        </ul>
+    </nav>
+    </header>
     <div class="box">
         <div class="forms">
+            <!-- Tips for switching between login and register forms -->
             <div class="tips">
-                <span class="login-btn">login</span>
-                <span class="register-btn">register</span>
+                <span class="login-btn">Login</span>
+                <span class="register-btn">Register</span>
             </div>
+            <!-- Login Form -->
             <div class="login">
                 <div class="form-title">
                     <h1>Hello</h1>
-                    <h4>一个人的夜晚寂寞难耐，欲火焚身，codegpt能让你在孤独的夜中得到陪伴，让codegpt与你缠绵一整夜！</h4>
+                    <h4>Code GPT</h4>
                 </div>
+
                 <form class="form" method="post">
                     <div class="username input-item">
-                        <input type="text" name = "username" class="ipts">
+                        <input type="text" name = "username" class="ipts" placeholder="">
                     </div>
                     <div class="password input-item">
-                        <input type="password" name = "password" class="ipts">
+                        <input type="password" name = "password" class="ipts" placeholder="">
                     </div>
                     <div class="other-select">
+                        <!-- Remember password checkbox -->
                         <div class="rem-pwd">
                             <input type="checkbox" id="check">
-                            <label for="check" class="rem-pwd-tips">remember password</label>
+                            <label for="check" class="rem-pwd-tips">Remember password</label>
                         </div>
-                        <span class="fogot-pwd-btn">forgot password</span>
+                        <span class="fogot-pwd-btn">Forgot Password</span>
                     </div>
                     <button class="btn" type="submit">Login</button>
-                    <div class="other-login">
-                        <span>Other login methods</span>
-                        <div class="login-img">
-                            <img src="{{ url_for("static", filename="images/facebook-one.png") }}" alt="">
-                            <img src="{{ url_for("static", filename="images/google.png") }}" alt="">
-                        </div>
-                    </div>
                 </form>
             </div>
+            <!-- Register Form -->
             <div class="register">
                 <div class="form-title">
                     <h1>Register</h1>
-                    <h4>一个人的夜晚寂寞难耐，欲火焚身，codegpt能让你在孤独的夜中得到陪伴，让codegpt与你缠绵一整夜！</h4>
+                    <h4>Code GPT</h4>
                 </div>
                 <form class="form" method="POST">
                     <div class="username input-item">
-                        <input type="text" name="username_register" class="ipts">
+                        <input type="text" name="username_register" class="ipts" placeholder="">
                     </div>
                     <div class="email input-item">
-                        <input type="email" name="email" class="ipts">
+                        <input type="text" name="email" class="ipts" placeholder="">
                     </div>
                     <div class="code input-item">
-                        <input type="text" name="captcha" class="ipts">
+                        <input type="text" name="captcha" class="ipts" placeholder="">
                         <span class="veri-code-tips">Click To Get</span>
                     </div>
                     <div class="password input-item">
-                        <input type="password" name="password_register" class="ipts">
+                        <input type="password" name="password_register" class="ipts" placeholder="">
                     </div>
                     <div class="conform-password input-item">
-                        <input type="password" name="password_confirm" class="ipts">
+                        <input type="password" name="password_confirm" class="ipts" placeholder=" ">
                     </div>
-                    
                     <button type="submit" class="btn">Register</button>
                 </form>
             </div>
+            <!-- Forgot Password Form -->
             <div class="fogot-pwd">
                 <div class="form-title">
-                    <h1>fogot-pwd</h1>
-                    <h4>一个人的夜晚寂寞难耐，欲火焚身，codegpt能让你在孤独的夜中得到陪伴，让codegpt与你缠绵一整夜！</h4>
+                    <h1>Forgot Password</h1>
+                    <h4>Code GPT</h4>
                 </div>
                 <div class="form">
                     <div class="username input-item">
-                        <input type="text" class="ipts">
+                        <input type="text" class="ipts" placeholder="">
                     </div>
-                     <div class="email input-item">
-                        <input type="text" class="ipts">
+                    <div class="email input-item">
+                        <input type="text" class="ipts" placeholder="">
                     </div>
                     <div class="password input-item">
-                        <input type="password" class="ipts">
+                        <input type="password" class="ipts" placeholder="">
                     </div>
                     <div class="code input-item">
-                        <input type="text" class="ipts">
+                        <input type="text" class="ipts" placeholder="">
                         <span class="veri-code-tips">Click To Get</span>
                     </div>
                     <button class="btn">Confirm</button>
                 </div>
             </div>
         </div>
-
     </div>
 </body>
 <script>
-    const login = document.querySelector('.login')
-    const register = document.querySelector('.register')
-    const fogotPwd = document.querySelector('.fogot-pwd')
-    const registerBtn = document.querySelector('.register-btn')
-    const loginBtn = document.querySelector('.login-btn')
-    const fogotPwdBtn = document.querySelector('.fogot-pwd-btn')
-    const veriCodeTips = document.querySelector('.veri-code-tips');
-    let reckonTimeFlag = 30; //倒计时
-    let reckonTime; //定时器
-    //定时器
-    function countDown() {
-        veriCodeTips.innerHTML = `RESEND(${reckonTimeFlag})`
-        reckonTimeFlag--;
-        if (reckonTimeFlag < 0) {
-            clearInterval(reckonTime);
-            reckonTimeFlag = 30;
-            veriCodeTips.innerHTML = `Click To Get`;
-            veriCodeTips.style.color = "rgb(113 123 185)";
-            veriCodeTips.onclick = veriCodeTipsClick;
-        }
+    // Function to switch between pages (login, register, forgot password)
+    function switchPage(showPage, hidePages) {
+        showPage.style.opacity = '1';
+        showPage.style.zIndex = '10';
+        showPage.style.animation = 'into 1s ease';
+
+        hidePages.forEach((page) => {
+            page.style.opacity = '0';
+            page.style.zIndex = '-1';
+            page.style.animation = 'none';
+        });
     }
 
-    //点击事件触发的方法
-    function veriCodeTipsClick() {
-        veriCodeTips.onclick = null;
-        veriCodeTips.style.color = "rgb(153, 151, 151)";
-        reckonTime = setInterval(countDown, 1000);
-        countDown();
-    }
+    // Function to initialize countdown timer for verification code
+    function initializeCountdownTimer(veriCodeTips) {
+        let reckonTimeFlag = 5;
+        let reckonTime;
 
-    veriCodeTips.addEventListener('click', function () {
-        veriCodeTipsClick()
-        var email = $("input[name='email']").val();
-        $.ajax({
-            url: "/auth/captcha/email?email="+email,
-            method: "GET",
-            success: function(result){
-                var code = result['code'];
-                if (code == 200) {
-                    alert("验证码发送成功！");
-                } else {
-                    alert(result['message']);
-                }
-            },
-            fail: function(error) {
-                console.log(error);
+        function countDown() {
+            veriCodeTips.innerHTML = `RESEND (${reckonTimeFlag})`;
+            reckonTimeFlag--;
+            if (reckonTimeFlag < 0) {
+                clearInterval(reckonTime);
+                reckonTimeFlag = 5;
+                veriCodeTips.innerHTML = `Click To Get`;
+                veriCodeTips.style.color = "rgb(113, 123, 185)";
+                veriCodeTips.onclick = veriCodeTipsClick;
             }
-        })
-    })
-    registerBtn.addEventListener('click', function () {
-        login.style.opacity = '0'
-        fogotPwd.style.opacity = '0'
-        register.style.opacity = '1'
-        login.style.zIndex = '-1'
-        fogotPwd.style.zIndex = '-1'
-        register.style.zIndex = '10'
-        register.style.animation = 'into 1s ease'
-        login.style.animation = 'none'
-        fogotPwd.style.animation = 'none'
-        registerBtn.style.borderBottom = '4px solid rgb(249, 177, 122)'
-        registerBtn.style.color = '#fff'
-        loginBtn.style.borderBottom = 'none'
-        loginBtn.style.color = 'rgb(100, 108, 154)'
-    })
-    loginBtn.addEventListener('click', function () {
-        login.style.opacity = '1'
-        register.style.opacity = '0'
-        fogotPwd.style.opacity = '0'
-        login.style.zIndex = '10'
-        fogotPwd.style.zIndex = '-1'
-        register.style.zIndex = '-1'
-        login.style.animation = 'into 1s ease'
-        register.style.animation = 'none'
-        fogotPwd.style.animation = 'none'
-        registerBtn.style.borderBottom = ''
-        registerBtn.style.color = 'rgb(100, 108, 154)'
-        loginBtn.style.borderBottom = '4px solid rgb(249, 177, 122)'
-        loginBtn.style.color = '#fff'
-    })
-    fogotPwdBtn.addEventListener('click', function () {
-        fogotPwd.style.opacity = '1'
-        login.style.opacity = '0'
-        register.style.opacity = '0'
-        login.style.zIndex = '-1'
-        fogotPwd.style.zIndex = '10'
-        register.style.zIndex = '-1'
-        fogotPwd.style.animation = 'into 1s ease'
-        register.style.animation = 'none'
-        login.style.animation = 'none'
+        }
 
-    })
+        function veriCodeTipsClick() {
+            veriCodeTips.onclick = null;
+            veriCodeTips.style.color = "rgb(153, 151, 151)";
+            reckonTime = setInterval(countDown, 1000);
+            countDown();
+        }
+
+        veriCodeTips.addEventListener('click', function () {
+            veriCodeTipsClick()
+            var email = $("input[name='email']").val();
+            $.ajax({
+                url: "/auth/captcha/email?email=" + email,
+                method: "GET",
+                success: function (result) {
+                    var code = result['code'];
+                    if (code == 200) {
+                        alert("验证码发送成功！");
+                    } else {
+                        alert(result['message']);
+                    }
+                },
+                fail: function (error) {
+                    console.log(error);
+                }
+            })
+        })
+    }
+
+    // Get DOM elements
+    const login = document.querySelector('.login');
+    const register = document.querySelector('.register');
+    const fogotPwd = document.querySelector('.fogot-pwd');
+    const registerBtn = document.querySelector('.register-btn');
+    const loginBtn = document.querySelector('.login-btn');
+    const fogotPwdBtn = document.querySelector('.fogot-pwd-btn');
+    const veriCodeTips = document.querySelector('.veri-code-tips');
+
+    // Initialize page
+    initializeCountdownTimer(veriCodeTips);
+
+    // Add event listeners
+    registerBtn.addEventListener('click', function () {
+        switchPage(register, [login, fogotPwd]);
+        registerBtn.style.borderBottom = '4px solid rgb(249, 177, 122)';
+        registerBtn.style.color = '#fff';
+        loginBtn.style.borderBottom = 'none';
+        loginBtn.style.color = 'rgb(100, 108, 154)';
+    });
+
+    loginBtn.addEventListener('click', function () {
+        switchPage(login, [register, fogotPwd]);
+        loginBtn.style.borderBottom = '4px solid rgb(249, 177, 122)';
+        loginBtn.style.color = '#fff';
+        registerBtn.style.borderBottom = '';
+        registerBtn.style.color = 'rgb(100, 108, 154)';
+    });
+
+    fogotPwdBtn.addEventListener('click', function () {
+        switchPage(fogotPwd, [login, register]);
+    });
+
 </script>
 
 </html>
