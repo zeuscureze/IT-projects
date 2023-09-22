@@ -15,10 +15,10 @@ modeSwitch.addEventListener("click", () => {
     
     if(body.classList.contains("dark")){
         modeText.innerText = "Dark mode"; // Change here
-        editor.setOption("theme", "ayu-mirage");
+        editor.setOption("theme", "base16-dark");
     } else {
         modeText.innerText = "Light mode"; // And here
-        editor.setOption("theme", "neo");
+        editor.setOption("theme", "base16-light");
     }
 });
 
@@ -37,7 +37,7 @@ var codeEditor = document.getElementById("editor");
 var editor = CodeMirror.fromTextArea(codeEditor, {
     lineNumbers: true,
     matchBrackets: true,
-    theme: "ayu-mirage",
+    theme: "base16-dark",
     mode: "python"
 });
 editor.setSize("100%", "100%")
