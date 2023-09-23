@@ -170,6 +170,7 @@ body.dark .sidebar header .toggle{
 }
 
 .sidebar li.search-box{
+    display: none;
     border-radius: 6px;
     background-color: var(--primary-color-light);
     cursor: pointer;
@@ -177,6 +178,7 @@ body.dark .sidebar header .toggle{
 }
 
 .sidebar li.search-box input{
+    display: none;
     height: 100%;
     width: 100%;
     outline: none;
@@ -326,17 +328,17 @@ body.dark .home .text{
 
 /* Light mode styles */
 body.light .messages .message .timestamp {
-    color: black;
+    color: #4c4c4c;
 }
 body.light.chat-title{
     background-color: #E4E9F7;
 }
 body.light .chat-title {
-    color: black;
+    color: #4c4c4c;
     background-color: #E4E9F7;
 }
 body.light .chat-title h2 {
-    color: black;
+    color: #4c4c4c;
     background-color: #E4E9F7;
 }
 body.light .message .avatar,
@@ -354,6 +356,25 @@ body.light .messages .message.message-personal {
 body.light .message-submit {
     color: white;
     background-color: #476b97;
+}
+
+body.light .message-box .message-submit:hover {
+    color: white;
+    background-color: #475e97;
+}
+
+body.light .sidebar .text{
+    color: #4c4c4c;
+}
+body.light .sidebar .icon{
+    color: #4c4c4c;
+}
+
+body.light .messages .message::before {
+    border-top: 6px solid #476b97;
+}
+body.light .messages .message.message-personal::before {
+    border-top: 4px solid #476b97;
 }
 
 *,
@@ -412,6 +433,7 @@ Chat Title
 }
 .chat-title .avatar {
   position: absolute;
+  display: flex;
   z-index: 1;
   top: 8px;
   left: 9px;
@@ -460,7 +482,8 @@ Messages
 }
 .messages .message .timestamp {
   position: absolute;
-  bottom: -15px;
+  left: 5px;
+  bottom: -25px;
   font-size: 9px;
   color: #fff;
 }
@@ -468,7 +491,7 @@ Messages
   content: "";
   position: absolute;
   bottom: -6px;
-  border-top: 6px solid rgba(0, 0, 0, 0.3);
+  border-top: 6px solid #808080;
   left: 0;
   border-right: 7px solid transparent;
 }
@@ -501,7 +524,7 @@ Messages
   right: 0;
   border-right: none;
   border-left: 5px solid transparent;
-  border-top: 4px solid #257287;
+  border-top: 4px solid #808080;
   bottom: -4px;
 }
 .messages .message:last-child {
@@ -591,7 +614,7 @@ Message Box
   border: none;
   outline: none !important;
   resize: none;
-  color: rgba(255, 255, 255, 0.7);
+  color: white;
   font-size: 16px;        
   height: 17px;
   margin-top: 1px;       /* 调整上方的距离 */
@@ -626,19 +649,14 @@ Message Box
   outline: none !important;
   transition: background 0.2s ease;
 }
-/* 当输入框获得焦点时，更改边框颜色和增加轻微的阴影 */
-.message-box .message-input:focus {
-    border-color: #007BFF; /* 蓝色边框 */
-    box-shadow: 0 0 5px rgba(0,123,255,0.3);
-}
 
 /* 改变占位符颜色 */
 .message-box .message-input::placeholder {
-    color: #bbb;
+    color: white;
 }
 
 .message-box .message-submit:hover {
-  background: #808080;
+  background: #8d8d8d;
 }
 
 /*--------------------
@@ -758,4 +776,256 @@ Bounce
   to {
     transform: translateY(-10px);
   }
+}
+ /* Drop down menu*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color: #222429;
+  --primary-bg-color: #808080;
+  --primary-color: #2c62f6;
+  --text-color: #b1b8ca;
+  --text-active: #ffffff;
+  --button-hover-bg-color: #2b2e34;
+  --border-color: #494d59;
+  --dropdown-height: 0;
+  --rotate-arrow: 0;
+  --translate-value: 0;
+  --list-opacity: 0;
+  --transition-time: 0.2s;
+  --transition-timing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --border-radius: 1.4rem;
+  --list-button-height: 4.6rem;
+  --floating-icon-size: 26;
+  --floating-icon-top: 0;
+  --floating-icon-left: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg-color);
+  padding: 1.5rem;
+  line-height: 1.4;
+}
+
+body.light .main-button{
+    color:white;
+    background-color: #476b97;
+}
+body.light .dropdown-button svg{
+    fill: white;
+}
+body.light .dropdown-button:focus{
+    color:white;
+}
+body.light .dropdown-button:hover{
+    color:#AFEEEE;
+}
+body.light .dropdown-button:focus svg {
+  fill: white;
+}
+body.light .dropdown-button:hover svg {
+  fill: #AFEEEE;
+}
+body.light .dropdown-list-wrapper {
+    background-color: #476b97;
+}
+body.light .floating-icon{
+    background-color: #476b97;
+}
+body.light ul.dropdown-list::before {
+    background-color: #385578;
+}
+
+
+button {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+}
+
+svg {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.text-truncate {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.dropdown-container {
+  position: absolute; 
+  top: 50%;                /* 把容器放在父元素的中心 */
+  left: 50%;               /* 把容器放在父元素的中心 */
+  transform: translate(-50%, -50%);  /* 使用transform属性确保容器完全居中 */
+  display: flex;
+  flex-direction: column;  
+  width: 25%;
+  max-width: 25rem;
+}
+
+.dropdown-title-icon,
+.dropdown-arrow {
+  display: inline-flex;
+}
+
+.dropdown-title {
+  margin: 0 auto 0 1.8rem;
+  text-transform: capitalize;
+}
+
+.dropdown-button {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1.7rem;
+  display: flex;
+  align-items: center;
+  padding: 0 1.8rem;
+}
+
+.dropdown-button svg {
+  transition: all var(--transition-time) var(--transition-timing);
+  fill: var(--text-color);
+}
+
+.dropdown-button svg,
+.dropdown-button span {
+  pointer-events: none;
+}
+
+.dropdown-button:hover,
+.dropdown-button:focus {
+  color: var(--text-active);
+}
+
+.dropdown-button:hover svg,
+.dropdown-button:focus svg {
+  fill: var(--text-active);
+}
+
+.main-button {
+  height: 3rem;
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+  background-color: var(--primary-bg-color);
+  border: 0.1rem solid var(--border-color);
+  transition: all var(--transition-time) var(--transition-timing);
+}
+
+.main-button:focus {
+  border: 0.1rem solid var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(44, 98, 246, 0.4);
+}
+
+.main-button .dropdown-arrow {
+  transition: transform var(--transition-time) var(--transition-timing);
+  transform: rotate(var(--rotate-arrow));
+  margin-left: 1.8rem;
+}
+
+.list-button {
+  height: var(--list-button-height);
+  transition: color var(--transition-time) var(--transition-timing);
+  color: var(--text-color);
+  overflow: hidden;
+  cursor: none;
+}
+
+.dropdown-list-container {
+  overflow: hidden;
+  max-height: var(--dropdown-height);
+  transition: max-height var(--transition-time) var(--transition-timing);
+}
+
+.dropdown-list-wrapper {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-time) var(--transition-timing), visibility var(--transition-time) var(--transition-timing);
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--primary-bg-color);
+  border-radius: var(--border-radius);
+  border: 0.1rem solid var(--border-color);
+  position: absolute;
+  top: 100%;    /* 开始在按钮的下方弹出下拉列表 */
+  width: 100%;  /* 确保下拉列表占据容器的全部宽度 */
+  z-index: 1;   /* 确保它显示在主按钮上方 */
+}
+}
+
+ul.dropdown-list {
+  position: relative;
+  list-style-type: none;
+}
+
+ul.dropdown-list::before {
+  content: "";
+  position: absolute;
+  top: 5;
+  right: 0;
+  left: 0;
+  z-index: 0;
+  opacity: 0;
+  height: var(--list-button-height);
+  background-color: #737373;
+  transition: all var(--transition-time) linear;
+  transform: translateY(var(--translate-value));
+  border-radius: var(--border-radius);
+  pointer-events: none;
+}
+ul.dropdown-list:hover::before,
+ul.dropdown-list:hover ~ .floating-icon {
+  opacity: 1;
+}
+
+li.dropdown-list-item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  opacity: var(--list-opacity);
+  transition: opacity 0.8s var(--transition-timing);
+}
+
+.floating-icon {
+  height: calc(var(--floating-icon-size) * 1px);
+  width: calc(var(--floating-icon-size) * 1px);
+  position: absolute;
+  top: var(--floating-icon-top);
+  left: var(--floating-icon-left);
+  background-color: #666666;
+  border-radius: 1rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-time) var(--transition-timing);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-icon svg {
+  fill: var(--text-active);
 }

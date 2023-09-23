@@ -1,33 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" >
-<body class="dark">
-<head>
-  <meta charset="UTF-8">
-  <title>Chat Page</title>
-  <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.min.css'><link rel="stylesheet" href="./style.css">
-
-</head>
-<body>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type=" x-icon" href="logo.png">
-    <!----======== CSS ======== -->
-    <link rel="stylesheet" href="style.css">
-    
-    <!----===== Boxicons CSS ===== -->
+    <title>Chat Page</title>
+    <link rel="shortcut icon" type="x-icon" href="logo.png">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.min.css'>
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    
-    <!--<title>Dashboard Sidebar Menu</title>--> 
 </head>
-<body>
-    <nav class="sidebar close">
+<body class="dark">
+    <nav class="sidebar">
         <header>
             <div class="image-text">
                 <span class="image">
@@ -124,8 +110,29 @@
                 <h1>CHat box</h1>
                 <h2>AI</h2>
                 <figure class="avatar">
-                    <img src="C.jpg" /></figure>
-        </div>
+                    <img src="C.jpg" /></figure> 
+                <div class="dropdown-container">
+                    <button class="dropdown-button main-button">
+                        <span class="dropdown-title-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path d="M6 0L0 10h5l-2 6L16 6h-5L14 0z"/>
+                            </svg>
+                        </span>
+                        <span class="dropdown-title text-truncate">Chat GPT3.5</span>
+                        <span class="dropdown-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                        </svg>
+                        </span>
+                    </button>
+                    <div class="dropdown-list-container">
+                        <div class="dropdown-list-wrapper">
+                        <ul class="dropdown-list"></ul>
+                        <div class="floating-icon" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <div class="messages">
             <div class="messages-content"></div>
         </div>
@@ -138,44 +145,32 @@
         <div class="bg"></div>
         <!-- partial -->
         <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.concat.min.js'></script><script  src="./script.js"></script>
-    </section>
-
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.concat.min.js'></script>
+    <script src="./script.js"></script>
     <script>
         const body = document.querySelector('body'),
-      sidebar = body.querySelector('nav'),
-      toggle = body.querySelector(".toggle"),
-      searchBtn = body.querySelector(".search-box"),
-      modeSwitch = body.querySelector(".toggle-switch"),
-      modeText = body.querySelector(".mode-text");
+              sidebar = body.querySelector('nav'),
+              toggle = body.querySelector(".toggle"),
+              searchBtn = body.querySelector(".search-box"),
+              modeSwitch = body.querySelector(".toggle-switch"),
+              modeText = body.querySelector(".mode-text");
 
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
 
-toggle.addEventListener("click" , () =>{
-    sidebar.classList.toggle("close");
-})
+        searchBtn.addEventListener("click", () => {
+            sidebar.classList.remove("close");
+        });
 
-searchBtn.addEventListener("click" , () =>{
-    sidebar.classList.remove("close");
-})
-
-modeSwitch.addEventListener("click" , () =>{
-    body.classList.toggle("dark");
-    
-    if(body.classList.contains("dark")){
-        modeText.innerText = "Dark mode";
-    }else{
-        modeText.innerText = "Light mode";
-        
-    }
-});
+        modeSwitch.addEventListener("click", () => {
+            body.classList.toggle("dark");
+            if(body.classList.contains("dark")){
+                modeText.innerText = "Dark mode";
+            } else {
+                modeText.innerText = "Light mode";
+            }
+        });
     </script>
-    
-  <!--<title>Chat box</title>-->    
-
-</body>
-</html>
-<!-- partial -->
-  <script  src="./script.js"></script>
-
 </body>
 </html>
