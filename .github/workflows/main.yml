@@ -14,4 +14,4 @@ jobs:
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "it-projects " #Must be unique in Heroku
-          heroku_email: "jlguo1021@hotmail.com"
+          heroku_email: "juliangg@student.unimelb.edu.au"
