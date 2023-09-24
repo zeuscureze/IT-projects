@@ -12,7 +12,7 @@ openai.api_key = "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"
 @bp.route("/code", methods=("GET", "POST"))
 def code():
 
-    user_input = ""
+    user_input = "write qsort with C"
     result = ""
     if request.method == 'POST':
         user_input = request.form['user_input']

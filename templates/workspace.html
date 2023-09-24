@@ -1,0 +1,143 @@
+<!-- The sidebar part is based on https://codepen.io/IndArya_1234/pen/poZBBOB by Indian Arya -->
+<!-- input area uses CodeMirror package to create a code editor -->
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type=" x-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Codemirror package -->
+    <script src="{{ url_for('static', filename='codemirror-5.65.15/lib/codemirror.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='codemirror-5.65.15/lib/codemirror.css') }}">
+    <script src="{{ url_for('static', filename='codemirror-5.65.15/mode/javascript/javascript.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='codemirror-5.65.15/theme/base16-dark.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='codemirror-5.65.15/theme/base16-light.css') }}">
+    <!-- barcket match -->
+    <script src="{{ url_for('static', filename='codemirror-5.65.15/addon/edit/matchbrackets.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='codemirror-5.65.15/mode/python/python.js') }}"></script>
+    <!-- <script src="./codemirror-5.65.15/mode/sql/sql.js"></script> -->
+
+    <!-- <link rel="stylesheet" href="./codemirror-5.65.15/addon/hint/show-hint.css">
+    <script src="./codemirror-5.65.15/addon/hint/show-hint.js"></script>
+    <script src="./codemirror-5.65.15/addon/hint/sql-hint.js"></script>
+     -->
+    <title>CodeGPT-Workspace</title>
+</head>
+<body class="dark">
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="">
+                </span>
+
+                <div class="text logo-text">
+                    <span class="name">CODE GPT</span>
+                    <span class="profession">Programming AI</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-message-dots icon'></i>
+                            <span class="text nav-text">Chat</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-help-circle icon'></i>
+                            <span class="text nav-text">Q&A</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-cog icon'></i>
+                            <span class="text nav-text">Setting</span>
+                        </a>
+                    </li>
+                    
+                    <br>
+                    <hr>
+                    <br>
+
+                    <!-- history -->
+                    <li class="nav-link">
+                        <i class='bx bx-time-five icon'></i>
+                        <span class="text nav-text">History</span>
+                    </li>
+                    <br>
+                    
+                    <ul id="history" class="text nav-text history">This is history list</ul>
+
+
+                   
+
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Log Out</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-sun icon sun'></i>
+                        <i class='bx bx-moon icon moon'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+            </div>
+        </div>
+
+    </nav>
+
+    <section class="home">
+        <div class="text"><p>Workspace</p></div>
+        <div class="work">
+            <!-- input area -->
+            <textarea class="query-text text" readonly>{{ user_input }}</textarea>
+            <br><br>
+            <div class="input-area">
+                <textarea class="text-area text" id="editor"></textarea>
+                <div class="buttons">
+                    <button class="compare bx bx-check-double"></button>
+                </div>
+            </div>
+
+            <!-- AI area -->
+            <div class="ai-text-area-container">
+                <textarea class="ai-text-area text" readonly>{{ response }}</textarea>
+                <button class="ai-close bx bx-x"></button>
+            </div>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
