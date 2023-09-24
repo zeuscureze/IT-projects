@@ -1,3 +1,51 @@
+/* 为小屏幕设备设置样式 */
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+    .sidebar {
+        width: 50vw; /* 视口宽度的50% */
+    }
+    .home {
+        width: 50vw; /* 视口宽度的50% */
+    }
+    .chat {
+        width: 100vw; /* 视口宽度的100% */
+    }
+}
+
+/* 为中等屏幕设备设置样式 */
+@media (min-width: 601px) and (max-width: 1024px) {
+    body {
+        font-size: 16px;
+    }
+    .sidebar {
+        width: 30vw; /* 视口宽度的30% */
+    }
+    .home {
+        width: 70vw; /* 视口宽度的70% */
+    }
+    .chat {
+        width: 100vw; /* 视口宽度的100% */
+    }
+}
+
+/* 为大屏幕设备设置样式 */
+@media (min-width: 1025px) {
+    body {
+        font-size: 18px;
+    }
+    .sidebar {
+        width: 20vw; /* 视口宽度的20% */
+    }
+    .home {
+        width: 80vw; /* 视口宽度的80% */
+    }
+    .chat {
+        width: 100vw; /* 视口宽度的100% */
+    }
+}
+
 /* Google Font Import - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 *{
