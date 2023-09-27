@@ -7,7 +7,12 @@ import openai
 bp = Blueprint("gpt", __name__, url_prefix="/gpt")
 
 
-@bp.route("/")
+@bp.route("/chat")
+def chat():
+    return render_template("chat.html")
+
+
+@bp.route("/workspace")
 def workspace():
     # user_input = request.args.get("user_input")
 
