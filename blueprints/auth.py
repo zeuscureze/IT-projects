@@ -5,7 +5,7 @@ from flask import request
 import string
 import random
 from models import EmailCaptchaModel, UserModel
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, ForgotPasswordForm
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -52,6 +52,21 @@ def login():
         else:
             print(form.errors)
             return f"注册失败 {form.errors}"  # redirect(url_for("auth.login"))
+    elif "username_forgot" in request.form:
+        print("GESTIN")
+        form = ForgotPasswordForm(request.form)
+        if form.validate():
+            email = form.email_forgot.data
+            username = form.username_forgot.data
+            password = form.password_forgot.data
+            user = UserModel.query.filter_by(email=email).first()
+            user.username = username
+            user.password = password
+            db.session.commit()
+            return redirect(url_for("auth.login"))
+        else:
+            print(form.errors)
+            return f"找回失败 {form.errors}"  # redirect(url_for("auth.login"))
 
 
 @bp.route("/logout")
