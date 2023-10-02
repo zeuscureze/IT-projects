@@ -20,7 +20,7 @@ def code():
             model="text-davinci-003",
             prompt=generate_prompt(user_input),
             temperature=0.6,
-            max_tokens=500  # 设置生成的最大标记数量
+            max_tokens=500  #
         )
         result = response.choices[0].text
     return render_template('root.html', user_input=user_input, result=result)

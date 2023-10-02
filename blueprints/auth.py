@@ -27,9 +27,6 @@ def login():
                 print("用户在数据库中不存在！")
                 return redirect(url_for("auth.login"))
             if check_password_hash(user.password, password):
-                # cookies: 存放少量数据，例如登录授权的东西
-                # flask中的session是经过贾母后储存在cookie中的
-                # session保存登录信息
                 session['user_id'] = user.id
                 return redirect(url_for("ai.code"))  # redirect("/code")
 
@@ -75,7 +72,6 @@ def logout():
     return redirect("/")
 
 
-# 如果没有在下面的括号内指定methods参数， 就默认GET请求
 @bp.route("/captcha/email")
 def get_email_captcha():
     email = request.args.get("email")
