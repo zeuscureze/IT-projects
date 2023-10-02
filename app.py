@@ -10,10 +10,9 @@ from blueprints.gpt import bp as gpt_bp
 from flask_migrate import Migrate
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 
-# 绑定配置文件
 app.config.from_object(config)
 
 

@@ -1,3 +1,50 @@
+/* 为小屏幕设备设置样式 */
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+    .sidebar {
+        width: 50vw; /* 视口宽度的50% */
+    }
+    .home {
+        width: 50vw; /* 视口宽度的50% */
+    }
+    .chat {
+        width: 100vw; /* 视口宽度的100% */
+    }
+}
+
+/* 为中等屏幕设备设置样式 */
+@media (min-width: 601px) and (max-width: 1024px) {
+    body {
+        font-size: 16px;
+    }
+    .sidebar {
+        width: 30vw; /* 视口宽度的30% */
+    }
+    .home {
+        width: 70vw; /* 视口宽度的70% */
+    }
+    .chat {
+        width: 100vw; /* 视口宽度的100% */
+    }
+}
+
+/* 为大屏幕设备设置样式 */
+@media (min-width: 1025px) {
+    body {
+        font-size: 18px;
+    }
+    .sidebar {
+        width: 20vw; /* 视口宽度的20% */
+    }
+    .home {
+        width: 80vw; /* 视口宽度的80% */
+    }
+    .chat {
+        width: 100vw; /* 视口宽度的100% */
+    }
+}
 /* Google Font Import - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 *{
@@ -11,14 +58,14 @@ img{
     width: 70px;
 }
 :root{
-    
+
     --body-color: #E4E9F7;
     --sidebar-color: #FFF;
     --primary-color: #5686bf;
     --primary-color-light: #F6F5FF;
     --toggle-color: #DDD;
     --text-color: #707070;
-    
+
     --tran-03: all 0.2s ease;
     --tran-03: all 0.3s ease;
     --tran-04: all 0.3s ease;
@@ -56,7 +103,7 @@ body.dark{
     padding: 10px 14px;
     background: var(--sidebar-color);
     transition: var(--tran-05);
-    z-index: 100;  
+    z-index: 100;
 }
 .sidebar.close{
     width: 88px;
@@ -324,6 +371,13 @@ body.dark .home .text{
     color: var(--text-color);
 }
 
+body.light .sidebar .text{
+    color: #4c4c4c;
+}
+body.light .sidebar .icon{
+    color: #4c4c4c;
+}
+
 /* AI Chat Box */
 
 /* Light mode styles */
@@ -363,12 +417,6 @@ body.light .message-box .message-submit:hover {
     background-color: #475e97;
 }
 
-body.light .sidebar .text{
-    color: #4c4c4c;
-}
-body.light .sidebar .icon{
-    color: #4c4c4c;
-}
 
 body.light .messages .message::before {
     border-top: 6px solid #476b97;
@@ -628,7 +676,7 @@ Message Box
   -webkit-appearance: none;
   -moz-appearance: none;
 }
-.message-box textarea:{
+.message-box textarea {
   color: transparent;
 }
 
@@ -973,7 +1021,7 @@ svg {
   width: 100%;  /* 确保下拉列表占据容器的全部宽度 */
   z-index: 1;   /* 确保它显示在主按钮上方 */
 }
-}
+
 
 ul.dropdown-list {
   position: relative;
@@ -983,7 +1031,7 @@ ul.dropdown-list {
 ul.dropdown-list::before {
   content: "";
   position: absolute;
-  top: 5;
+  top: 5px;
   right: 0;
   left: 0;
   z-index: 0;
