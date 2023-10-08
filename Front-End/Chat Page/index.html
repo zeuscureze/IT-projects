@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Chat Page
+  </title>
+  <link href="logo.png" rel="shortcut icon" type="x-icon"/>
+  <link href="./style.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet"/>
+ </head>
+ <body class="dark">
+  <nav class="sidebar">
+   <header>
+    <div class="image-text">
+     <span class="image">
+      <img alt="" src="logo.png"/>
+     </span>
+     <div class="text logo-text">
+      <span class="name">
+       CODE GPT
+      </span>
+      <span class="profession">
+       Programming AI
+      </span>
+     </div>
+    </div>
+    <i class="bx bx-chevron-right toggle">
+    </i>
+   </header>
+   <div class="menu-bar">
+    <div class="menu">
+     <ul class="menu-links">
+         
+       <li class="nav-link">
+       <a href="#">
+        <i class="bx bx-message-dots icon">
+        </i>
+        <span class="text nav-text">
+         Chat
+        </span>
+       </a>
+      </li>  
+         
+      <li class="nav-link">
+       <a href="#">
+        <i class="bx bx-code-alt icon">
+        </i>
+        <span class="text nav-text">
+         Workspace
+        </span>
+       </a>
+      </li>
+         
+      <li class="nav-link">
+       <a href="#">
+        <i class="bx bx-help-circle icon">
+        </i>
+        <span class="text nav-text">
+         Q&amp;A
+        </span>
+       </a>
+      </li>
+         
+      <li class="nav-link dropdown account">
+       <a class="dropdown-toggle" href="#">
+        <i class="bx bx-user icon">
+        </i>
+        <span class="text nav-text">
+         Account
+        </span>
+       </a>
+       <div class="dropdown-menu">
+        <div class="menu-item">
+         <span>
+          My Plan
+         </span>
+         <button class="dots-button">
+         </button>
+        </div>
+        <div class="menu-item">
+         <span>
+          Plugins
+         </span>
+         <label class="switch">
+          <input type="checkbox"/>
+          <span class="slider round">
+          </span>
+         </label>
+        </div>
+        <div class="menu-item">
+         <span>
+          Beta Features
+         </span>
+         <label class="switch">
+          <input type="checkbox"/>
+          <span class="slider round">
+          </span>
+         </label>
+        </div>
+       </div>
+      </li>
+         
+      <br/>
+      <hr/>
+         
+      <!-- 历史记录 -->
+      <li class="nav-link">
+       <i class="bx bx-time-five icon">
+       </i>
+       <span class="text nav-text">
+        History
+       </span>
+      </li>
+      <li class="search-box">
+       <i class="bx bx-search icon">
+       </i>
+       <input placeholder="Search..." type="text"/>
+      </li>
+      <br/>
+      <ul class="text nav-text history" id="history">
+       This is history list
+      </ul>
+     </ul>
+    </div>
+    <div class="bottom-content">
+     <li class="">
+      <a href="#">
+       <i class="bx bx-log-out icon">
+       </i>
+       <span class="text nav-text">
+        Log Out
+       </span>
+      </a>
+     </li>
+     <li class="mode">
+      <div class="sun-moon">
+       <i class="bx bx-sun icon sun">
+       </i>
+       <i class="bx bx-moon icon moon">
+       </i>
+      </div>
+      <span class="mode-text text">
+       Dark mode
+      </span>
+      <div class="toggle-switch">
+       <span class="switch">
+       </span>
+      </div>
+     </li>
+    </div>
+   </div>
+  </nav>
+  <section class="home">
+   <div class="chat">
+    <div class="chat-title">
+     <h1>
+      CHat box
+     </h1>
+     <h2>
+      AI
+     </h2>
+     <figure class="avatar">
+      <img src="C.jpg"/>
+     </figure>
+     <div class="dropdown-container">
+      <button class="dropdown-button main-button">
+       <span class="dropdown-title-icon">
+        <svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+         <path d="M6 0L0 10h5l-2 6L16 6h-5L14 0z">
+         </path>
+        </svg>
+       </span>
+       <span class="dropdown-title text-truncate">
+        Chat GPT3.5
+       </span>
+       <span class="dropdown-arrow">
+        <svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+         <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z">
+         </path>
+        </svg>
+       </span>
+      </button>
+      <div class="dropdown-list-container">
+       <div class="dropdown-list-wrapper">
+        <ul class="dropdown-list">
+        </ul>
+        <div aria-hidden="true" class="floating-icon">
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="messages">
+     <div class="messages-content">
+     </div>
+    </div>
+    <div class="message-box">
+     <textarea class="message-input" placeholder="Type message..." type="text"></textarea>
+     <button class="message-submit" type="submit">
+      <i class="bx bx-send">
+      </i>
+     </button>
+    </div>
+   </div>
+
+
+   <!-- partial -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+   </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.concat.min.js">
+   </script>
+   <script src="./script.js">
+   </script>
+   <script>
+    const body = document.querySelector('body'),
+              sidebar = body.querySelector('nav'),
+              toggle = body.querySelector(".toggle"),
+              searchBtn = body.querySelector(".search-box"),
+              modeSwitch = body.querySelector(".toggle-switch"),
+              modeText = body.querySelector(".mode-text");
+
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
+
+        searchBtn.addEventListener("click", () => {
+            sidebar.classList.remove("close");
+        });
+
+        modeSwitch.addEventListener("click", () => {
+            body.classList.toggle("dark");
+            if(body.classList.contains("dark")){
+                modeText.innerText = "Dark mode";
+            } else {
+                modeText.innerText = "Light mode";
+            }
+        });
+   </script>
+  </section>
+
+  <div id="modal-overlay"></div>
+  <div id="modal">
+   <div class="closeTan">×</div>
+   <main class="main flow" >
+       <h1 class="main__heading">Pricing</h1>
+       <div class="main__cards cards">
+         <div class="cards__inner">
+           <div class="cards__card card">
+             <h2 class="card__heading">Basic</h2>
+             <p class="card__price">Free</p>
+             <ul role="list" class="card__bullets flow">
+               <li>Access to standard workouts and nutrition plans</li>
+               <li>Basic AI support</li>
+             </ul>
+             <a href="#basic" class="card__cta cta">Get Started</a>
+           </div>
+     
+           <div class="cards__card card">
+             <h2 class="card__heading">Pro</h2>
+             <p class="card__price">$19.99</p>
+             <ul role="list" class="card__bullets flow">
+               <li>Access to advanced workouts and nutrition plans</li>
+               <li>Advanced AI support</li>
+               <li>Exclusive access to plugin features</li>
+             </ul>
+             <a href="#pro" class="card__cta cta">Upgrade to Pro</a>
+           </div>
+     
+           <div class="cards__card card">
+             <h2 class="card__heading">Ultimate</h2>
+             <p class="card__price">$29.99</p>
+             <ul role="list" class="card__bullets flow">
+               <li>Access to all premium workouts and nutrition plans</li>
+               <li>Advanced AI support</li>
+               <li>Priority customer support</li>
+               <li>Exclusive content and early access to beta features</li>
+             </ul>
+             <a href="#ultimate" class="card__cta cta">Go Ultimate</a>
+           </div>
+         </div>
+         
+         <div class="overlay cards__inner"></div>
+       </div>
+     </main>
+  </div>
+ </body>
+</html>
