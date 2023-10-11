@@ -1,4 +1,6 @@
-from flask import Blueprint, redirect, render_template, request, url_for, jsonify
+from flask import Blueprint, redirect, render_template, request, url_for, jsonify, g
+from models import HistoryModel
+from exts import db
 import os
 import openai
 
@@ -6,12 +8,12 @@ import openai
 bp = Blueprint("ai", __name__, url_prefix="/ai")
 
 
-openai.api_key = "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"
-
-
 @bp.route("/chat_response")
 def chat_response():
     m = request.args.get("m")
+    history = HistoryModel(content=m, user_id=g.user.id)
+    db.session.add(history)
+    db.session.commit()
     response = m
     return jsonify({"code": 200, "message": "", "response": response})
 

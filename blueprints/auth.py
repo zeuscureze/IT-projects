@@ -28,7 +28,7 @@ def login():
                 return redirect(url_for("auth.login"))
             if check_password_hash(user.password, password):
                 session['user_id'] = user.id
-                return redirect(url_for("ai.code"))  # redirect("/code")
+                return redirect(url_for("gpt.chat"))  # redirect("/code")
 
             else:
                 print("密码错误！")
@@ -58,7 +58,7 @@ def login():
             password = form.password_forgot.data
             user = UserModel.query.filter_by(email=email).first()
             user.username = username
-            user.password = password
+            user.password = generate_password_hash(password)
             db.session.commit()
             return redirect(url_for("auth.login"))
         else:

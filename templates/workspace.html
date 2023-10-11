@@ -52,14 +52,14 @@
 
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{{ url_for("gpt.chat") }}">
                             <i class='bx bx-message-dots icon'></i>
                             <span class="text nav-text">Chat</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{{ url_for("qa.blogs") }}">
                             <i class='bx bx-help-circle icon'></i>
                             <span class="text nav-text">Q&A</span>
                         </a>
@@ -82,8 +82,9 @@
                         <span class="text nav-text">History</span>
                     </li>
                     <br>
-                    
-                    <ul id="history" class="text nav-text history">This is history list</ul>
+                    {% for his in history %}
+                        <ul id="history" class="text nav-text history">{{ his.content }}</ul>
+                    {% endfor %}
 
 
                    

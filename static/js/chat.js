@@ -86,17 +86,15 @@ function insertMessage() {
     updateScrollbar();
     setTimeout(function () {
         $.ajax({
-            type: "GET",  // 或 "POST"，取决于你的需求
-            url: "/ai/chat_response",  // Flask后端的URL
-            data: {m: msg}, // 传递的参数
+            type: "GET",
+            url: "/ai/chat_response",
+            data: {m: msg},
             success: function (result) {
-                // 请求成功后的处理
-                console.log(result.response);
+
                 Fake.push(result.response);
-                // 在这里你可以处理Flask后端返回的数据
+
             },
             error: function (err) {
-                // 请求失败时的处理
                 console.error(err);
             }
         });
@@ -477,26 +475,3 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
-
-// Function to send message to OpenAI
-function sendMessageToOpenAI(message, callback) {
-    $.ajax({
-        url: "https://api.openai.com/v1/engines/davinci/completions",
-        type: "POST",
-        headers: {
-            "Authorization": "Bearer YOUR_OPENAI_API_KEY", // Replace with your OpenAI API key
-            "Content-Type": "application/json"
-        },
-        data: JSON.stringify({
-            prompt: message,
-            max_tokens: 150
-        }),
-        success: function (response) {
-            callback(response.choices[0].text.trim());
-        },
-        error: function (error) {
-            console.error("Error:", error);
-        }
-    });
-}
