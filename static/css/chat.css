@@ -1,4 +1,5 @@
 /* 为小屏幕设备设置样式 */
+
 @media (max-width: 600px) {
     body {
         font-size: 14px;
@@ -44,6 +45,31 @@
     .chat {
         width: 100vw; /* 视口宽度的100% */
     }
+}
+@media (min-width: 2550px) {
+    /* Adjust the main container width */
+    .container {
+        max-width: 2200px;  /* or whatever width you feel looks best */
+        margin: 0 auto;
+    }
+
+    /* Increase font size for better readability */
+    body {
+        font-size: 18px;  /* adjust as needed */
+    }
+
+    /* Adjust spacing for elements */
+    h1, h2, h3, p, .button {
+        margin-bottom: 1.5em;  /* increase spacing */
+    }
+
+    /* If you have images, ensure they scale appropriately */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* ... add other specific styles as needed ... */
 }
 /* Google Font Import - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
