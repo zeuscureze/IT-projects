@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <script src="{{ url_for('static', filename='jquery/jquery.3.6.min.js') }}"></script>
@@ -15,7 +15,7 @@
         <!-- Navigation Bar -->
         <nav class="top-menu">
         <ul>
-            <li><a href="#">CodeGPT</a></li>
+            <li><a href="{{ url_for("gpt.chat") }}">CodeGPT</a></li>
             <li><a class="active" href="{{ url_for("index.intro") }}">Introduction</a></li>
             <li><a href="{{ url_for("auth.login") }}">Sign In/ up</a></li>
             <li><a href="{{ url_for("qa.blogs") }}">Q&A</a></li>
@@ -86,22 +86,22 @@
                     <h1>Forgot Password</h1>
                     <h4>Code GPT</h4>
                 </div>
-                <div class="form">
+                <form class="form" method="POST">
                     <div class="username input-item">
-                        <input type="text" class="ipts" placeholder="">
+                        <input type="text" name="username_forgot" class="ipts" placeholder="">
                     </div>
                     <div class="email input-item">
-                        <input type="text" class="ipts" placeholder="">
+                        <input type="text" name="email_forgot" class="ipts" placeholder="">
                     </div>
                     <div class="password input-item">
-                        <input type="password" class="ipts" placeholder="">
+                        <input type="password" name="password_forgot" class="ipts" placeholder="">
                     </div>
                     <div class="code input-item">
-                        <input type="text" class="ipts" placeholder="">
-                        <span class="veri-code-tips">Click To Get</span>
+                        <input type="text" name="captcha_forgot" class="ipts" placeholder="">
+                        <span class="veri-code-tips" id="veri-code-tips1">Click To Get</span>
                     </div>
-                    <button class="btn">Confirm</button>
-                </div>
+                    <button type="submit" class="btn">Confirm</button>
+                </form>
             </div>
         </div>
     </div>
@@ -153,7 +153,50 @@
                 success: function (result) {
                     var code = result['code'];
                     if (code == 200) {
-                        alert("验证码发送成功！");
+                        alert("Veri Code Sent！");
+                    } else {
+                        alert(result['message']);
+                    }
+                },
+                fail: function (error) {
+                    console.log(error);
+                }
+            })
+        })
+    }
+    function initializeCountdownTimer1(veriCodeTips) {
+        let reckonTimeFlag = 5;
+        let reckonTime;
+
+        function countDown() {
+            veriCodeTips.innerHTML = `RESEND (${reckonTimeFlag})`;
+            reckonTimeFlag--;
+            if (reckonTimeFlag < 0) {
+                clearInterval(reckonTime);
+                reckonTimeFlag = 5;
+                veriCodeTips.innerHTML = `Click To Get`;
+                veriCodeTips.style.color = "rgb(113, 123, 185)";
+                veriCodeTips.onclick = veriCodeTipsClick;
+            }
+        }
+
+        function veriCodeTipsClick() {
+            veriCodeTips.onclick = null;
+            veriCodeTips.style.color = "rgb(153, 151, 151)";
+            reckonTime = setInterval(countDown, 1000);
+            countDown();
+        }
+
+        veriCodeTips.addEventListener('click', function () {
+            veriCodeTipsClick()
+            var email = $("input[name='email_forgot']").val();
+            $.ajax({
+                url: "/auth/captcha/email?email=" + email,
+                method: "GET",
+                success: function (result) {
+                    var code = result['code'];
+                    if (code == 200) {
+                        alert("Veri Code Sent！");
                     } else {
                         alert(result['message']);
                     }
@@ -173,9 +216,11 @@
     const loginBtn = document.querySelector('.login-btn');
     const fogotPwdBtn = document.querySelector('.fogot-pwd-btn');
     const veriCodeTips = document.querySelector('.veri-code-tips');
+    const veriCodeTips1 = document.getElementById('veri-code-tips1');
 
     // Initialize page
     initializeCountdownTimer(veriCodeTips);
+    initializeCountdownTimer1(veriCodeTips1);
 
     // Add event listeners
     registerBtn.addEventListener('click', function () {

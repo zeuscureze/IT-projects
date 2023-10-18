@@ -1,4 +1,6 @@
-from flask import Blueprint, redirect, render_template, request, url_for
+from flask import Blueprint, redirect, render_template, request, url_for, jsonify, g, escape
+from models import HistoryModel
+from exts import db
 import os
 import openai
 
@@ -6,31 +8,35 @@ import openai
 bp = Blueprint("ai", __name__, url_prefix="/ai")
 
 
-openai.api_key = "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"
+@bp.route("/chat_response")
+def chat_response():
+    m = request.args.get("m")
+    history = HistoryModel(content=m, user_id=g.user.id)
+    db.session.add(history)
+    db.session.commit()
 
+    user_input = m
+    gpt_output = openai.Completion.create(
+        model="text-davinci-003",
+        prompt=generate_prompt(user_input),
+        temperature=0.3,
+        max_tokens=2000
+    )
+    print(gpt_output)
+    result = gpt_output.choices[0].text
 
-@bp.route("/code", methods=("GET", "POST"))
-def code():
+    # result = "FAKE RESPONSE: this appears when gpt is not ready"
 
-    user_input = ""
-    result = ""
-    if request.method == 'POST':
-        user_input = request.form['user_input']
-        response = openai.Completion.create(
-            model="text-davinci-003",
-            prompt=generate_prompt(user_input),
-            temperature=0.6,
-            max_tokens=500  # 设置生成的最大标记数量
-        )
-        result = response.choices[0].text
-    return render_template('root.html', user_input=user_input, result=result)
+    response = escape("This is answer: \n" + result)
+
+    return jsonify({"code": 200, "message": "", "response": response})
 
 
 def generate_prompt(programming_topic):
-    return """Generate a code example related to {}.
+    return """Generate an explanation without using code, related to {}.
 
 Topic: {}
-Code:""".format(
+explanation:""".format(
         programming_topic,
         programming_topic.capitalize()
     )

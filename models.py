@@ -45,6 +45,7 @@ class HistoryModel(db.Model):
     __tablename__ = "history"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     content = db.Column(db.String(300), nullable=False)
+    create_time = db.Column(db.DateTime, default=datetime.now)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     user = db.relationship(UserModel, backref="histories")
 

@@ -5,7 +5,7 @@ from flask import request
 import string
 import random
 from models import EmailCaptchaModel, UserModel
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, ForgotPasswordForm
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -24,17 +24,14 @@ def login():
             password = form.password.data
             user = UserModel.query.filter_by(username=username).first()
             if not user:
-                print("用户在数据库中不存在！")
+                print("User does not exist in the DB server！")
                 return redirect(url_for("auth.login"))
             if check_password_hash(user.password, password):
-                # cookies: 存放少量数据，例如登录授权的东西
-                # flask中的session是经过贾母后储存在cookie中的
-                # session保存登录信息
                 session['user_id'] = user.id
-                return redirect(url_for("ai.code"))  # redirect("/code")
+                return redirect(url_for("gpt.chat"))  # redirect("/code")
 
             else:
-                print("密码错误！")
+                print("Wrong Password！")
                 return redirect(url_for("auth.login"))
         else:
             print(form.errors)
@@ -51,7 +48,21 @@ def login():
             return redirect(url_for("auth.login"))
         else:
             print(form.errors)
-            return f"注册失败 {form.errors}"  # redirect(url_for("auth.login"))
+            return f"Fail Registration {form.errors}"  # redirect(url_for("auth.login"))
+    elif "username_forgot" in request.form:
+        form = ForgotPasswordForm(request.form)
+        if form.validate():
+            email = form.email_forgot.data
+            username = form.username_forgot.data
+            password = form.password_forgot.data
+            user = UserModel.query.filter_by(email=email).first()
+            user.username = username
+            user.password = generate_password_hash(password)
+            db.session.commit()
+            return redirect(url_for("auth.login"))
+        else:
+            print(form.errors)
+            return f"Fail Resetting Password {form.errors}"  # redirect(url_for("auth.login"))
 
 
 @bp.route("/logout")
@@ -60,17 +71,16 @@ def logout():
     return redirect("/")
 
 
-# 如果没有在下面的括号内指定methods参数， 就默认GET请求
 @bp.route("/captcha/email")
 def get_email_captcha():
     email = request.args.get("email")
-    # 四位数字
+
     source = string.digits
     cap = []
     for i in range(0, 4):
         cap = cap + random.sample(source, 1)
     captcha_string = "".join(cap)
-    message = Message(subject="注册验证码", recipients=[email], body=f"您的验证码是：{captcha_string}")
+    message = Message(subject="Registration Captcha", recipients=[email], body=f"Your Verification Code is：{captcha_string}")
     mail.send(message)
     email_captcha = EmailCaptchaModel(email=email, captcha=captcha_string)
     db.session.add(email_captcha)
@@ -80,10 +90,3 @@ def get_email_captcha():
     return jsonify({"code": 200, "message": "", "data": None})
 
 
-@bp.route("/mail/test")
-def mail_test():
-    message = Message(subject="邮箱测试", recipients=["luo1733221346@163.com"], body="这是一条测试邮件")
-    mail.send(message)
-    # chenyees0915@gmail.com
-    # luo1733221346@163.com
-    return "邮件发送成功！"
