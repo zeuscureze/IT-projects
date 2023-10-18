@@ -1,0 +1,28 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Personal IDE files
+.idea/
+.vscode/
+
+# Virtual environment
+venv/
+.env/
+
+# Compiled Python files
+*.pyc
+
+# Logs and local database files
+*.log
+db.sqlite
+
+# User-uploaded media
+uploads/
+
+# Compiled HTML templates
+*.pyj
+
+# Environment-specific settings
+.env
