@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, jsonify, redirect, url_for, session, g
+from flask import Blueprint, render_template, jsonify, redirect, url_for, session, g, escape
 from exts import db
 from flask import request
 from models import UserModel, HistoryModel
@@ -6,6 +6,8 @@ from decorators import login_required
 import openai
 
 bp = Blueprint("gpt", __name__, url_prefix="/gpt")
+
+openai.api_key = ""
 
 
 @bp.route("/chat")
@@ -19,20 +21,19 @@ def chat():
 @login_required
 def workspace():
     history = HistoryModel.query.filter_by(user_id=g.user.id).order_by(HistoryModel.create_time.desc())
-
-    # user_input = request.args.get("user_input")
     query = HistoryModel.query.filter_by(user_id=g.user.id).order_by(HistoryModel.create_time.desc()).first()
     user_input = query.content
-    """gpt_output = openai.Completion.create(
+    gpt_output = openai.Completion.create(
         model="text-davinci-003",
         prompt=generate_prompt(user_input),
         temperature=0.6,
-        max_tokens=500  # 设置生成的最大标记数量
+        max_tokens=2000
     )
-    result = gpt_output.choices[0].text"""
-    result = "FAKE RESPONSE: this appears when gpt is not ready"
+    result = gpt_output.choices[0].text
+    # result = "FAKE RESPONSE: this appears when gpt is not ready"
 
-    response = "This is answer: \n" + result
+    response = escape("This is answer: \n" + result)
+    print(generate_prompt(user_input))
     return render_template("workspace.html", user_input=user_input, response=response, history=history)
 
 

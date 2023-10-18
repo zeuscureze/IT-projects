@@ -75,6 +75,8 @@ var Fake = [
     'Hello.How can I help?',
 ]
 
+var Exp = 'Your query did not receive a valid response...'
+
 function insertMessage() {
     msg = $('.message-input').val();
     if ($.trim(msg) == '') {
@@ -91,14 +93,14 @@ function insertMessage() {
             data: {m: msg},
             success: function (result) {
 
-                Fake.push(result.response);
+                Exp = result.response;
 
             },
             error: function (err) {
                 console.error(err);
             }
         });
-        fakeMessage();
+        expMessage();
     }, 1000 + (Math.random() * 20) * 100);
 }
 
@@ -118,16 +120,32 @@ function fakeMessage() {
     if ($('.message-input').val() != '') {
         return false;
     }
-    $('<div class="message loading new"><figure class="avatar"><img src="C.jpg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+    $('<div class="message loading new"><figure class="avatar"><img src="static/images/C.jpg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
     updateScrollbar();
 
     setTimeout(function () {
         $('.message.loading').remove();
-        $('<div class="message new"><figure class="avatar"><img src="C.jpg" /></figure>' + Fake[i] + '</div>').appendTo($('.mCSB_container')).addClass('new');
+        $('<div class="message new"><figure class="avatar"><img src="static/images/C.jpg" /></figure>' + Fake[i] + '</div>').appendTo($('.mCSB_container')).addClass('new');
         setDate();
         updateScrollbar();
         i++;
     }, 1500);
+}
+
+function expMessage() {
+    if ($('.message-input').val() != '') {
+        return false;
+    }
+    $('<div class="message loading new"><figure class="avatar"><img src="static/images/C.jpg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+    updateScrollbar();
+
+    setTimeout(function () {
+        $('.message.loading').remove();
+        $('<div class="message new"><figure class="avatar"><img src="static/images/C.jpg" /></figure>' + Exp + '</div>').appendTo($('.mCSB_container')).addClass('new');
+        setDate();
+        updateScrollbar();
+        i++;
+    }, 15000);
 }
 
 const root = document.documentElement;

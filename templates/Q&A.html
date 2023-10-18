@@ -21,9 +21,13 @@
     <nav class="top-menu">
         <ul>
             <!-- Navigation links -->
-            <li><a href="#">CodeGPT</a></li>
-            <li><a href="/">Introduction</a></li>
-            <li><a href="{{ url_for("auth.login") }}">Sign In/ up</a></li>
+            <li><a href="{{ url_for("gpt.chat") }}">CodeGPT</a></li>
+            <li><a href="{{ url_for("index.intro") }}">Introduction</a></li>
+            {% if user %}
+                <li><a href="{{ url_for("index.intro") }}">{{ user.username }}</a></li>
+            {% else %}
+                <li><a href="{{ url_for("auth.login") }}">Sign In/ up</a></li>
+            {% endif %}
             <li><a class="active" href="{{ url_for("qa.blogs") }}">Q&A</a></li>
             <li style="float:right"><a href="#"> Ask a Question</a></li>
         </ul>

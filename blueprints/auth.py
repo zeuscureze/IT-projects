@@ -24,14 +24,14 @@ def login():
             password = form.password.data
             user = UserModel.query.filter_by(username=username).first()
             if not user:
-                print("用户在数据库中不存在！")
+                print("User does not exist in the DB server！")
                 return redirect(url_for("auth.login"))
             if check_password_hash(user.password, password):
                 session['user_id'] = user.id
                 return redirect(url_for("gpt.chat"))  # redirect("/code")
 
             else:
-                print("密码错误！")
+                print("Wrong Password！")
                 return redirect(url_for("auth.login"))
         else:
             print(form.errors)
@@ -48,9 +48,8 @@ def login():
             return redirect(url_for("auth.login"))
         else:
             print(form.errors)
-            return f"注册失败 {form.errors}"  # redirect(url_for("auth.login"))
+            return f"Fail Registration {form.errors}"  # redirect(url_for("auth.login"))
     elif "username_forgot" in request.form:
-        print("GESTIN")
         form = ForgotPasswordForm(request.form)
         if form.validate():
             email = form.email_forgot.data
@@ -63,7 +62,7 @@ def login():
             return redirect(url_for("auth.login"))
         else:
             print(form.errors)
-            return f"找回失败 {form.errors}"  # redirect(url_for("auth.login"))
+            return f"Fail Resetting Password {form.errors}"  # redirect(url_for("auth.login"))
 
 
 @bp.route("/logout")
@@ -75,13 +74,13 @@ def logout():
 @bp.route("/captcha/email")
 def get_email_captcha():
     email = request.args.get("email")
-    # 四位数字
+
     source = string.digits
     cap = []
     for i in range(0, 4):
         cap = cap + random.sample(source, 1)
     captcha_string = "".join(cap)
-    message = Message(subject="注册验证码", recipients=[email], body=f"您的验证码是：{captcha_string}")
+    message = Message(subject="Registration Captcha", recipients=[email], body=f"Your Verification Code is：{captcha_string}")
     mail.send(message)
     email_captcha = EmailCaptchaModel(email=email, captcha=captcha_string)
     db.session.add(email_captcha)
@@ -91,10 +90,3 @@ def get_email_captcha():
     return jsonify({"code": 200, "message": "", "data": None})
 
 
-@bp.route("/mail/test")
-def mail_test():
-    message = Message(subject="邮箱测试", recipients=["luo1733221346@163.com"], body="这是一条测试邮件")
-    mail.send(message)
-    # chenyees0915@gmail.com
-    # luo1733221346@163.com
-    return "邮件发送成功！"

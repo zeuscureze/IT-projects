@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <script src="{{ url_for('static', filename='jquery/jquery.3.6.min.js') }}"></script>
@@ -15,7 +15,7 @@
         <!-- Navigation Bar -->
         <nav class="top-menu">
         <ul>
-            <li><a href="#">CodeGPT</a></li>
+            <li><a href="{{ url_for("gpt.chat") }}">CodeGPT</a></li>
             <li><a class="active" href="{{ url_for("index.intro") }}">Introduction</a></li>
             <li><a href="{{ url_for("auth.login") }}">Sign In/ up</a></li>
             <li><a href="{{ url_for("qa.blogs") }}">Q&A</a></li>
@@ -153,7 +153,7 @@
                 success: function (result) {
                     var code = result['code'];
                     if (code == 200) {
-                        alert("验证码发送成功！");
+                        alert("Veri Code Sent！");
                     } else {
                         alert(result['message']);
                     }
@@ -196,7 +196,7 @@
                 success: function (result) {
                     var code = result['code'];
                     if (code == 200) {
-                        alert("验证码发送成功！");
+                        alert("Veri Code Sent！");
                     } else {
                         alert(result['message']);
                     }
